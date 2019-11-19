@@ -32,6 +32,14 @@
 
 ?>
 
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Livre D'OR - Connexion</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
     <main>
         <section class="leftsidebar">
     <?php
