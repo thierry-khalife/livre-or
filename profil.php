@@ -92,20 +92,6 @@
                                 $_SESSION['login']=$_POST['login'];
                                 header("Location:profil.php");
                             }
-                        if($resultat['prenom'] != $prenom )
-                            {
-                                $updateprenom = "UPDATE utilisateurs SET prenom ='" . $_POST['prenom'] . "' WHERE id = '" . $resultat['id'] . "'";
-                                $queryprenom = mysqli_query($connexion, $updateprenom); # Execution de la requête;
-                               header("Location:profil.php");
-                            }
-                        if($resultat['nom'] != $nom )
-                            {
-                                $updatenom = "UPDATE utilisateurs SET nom ='" . $_POST['nom'] . "' WHERE id = '" . $resultat['id'] . "'";
-                                $querynom = mysqli_query($connexion, $updatenom); # Execution de la requête;
-                               header("Location:profil.php");
-                            }
-
-       
                     }
 
                 ?>
