@@ -10,13 +10,14 @@ main{
 	display: flex;
 	justify-content: space-around;
 	flex-grow:1;
+	padding-top: 50px;
 }
 header{
 	height: 150px;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;	
-	padding-top: 150px;
+	padding-top: 80px;
 	padding-left: 100px;
 	
 }
@@ -43,7 +44,8 @@ header img{
 	display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 300px;
+    width: 800px;
+
 }
 .nav img{
 	width: 40px;
@@ -118,7 +120,7 @@ header img{
 	display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 500px;
+    width: 600px;
 
 }
 .navfooter a{
