@@ -28,7 +28,7 @@
             <?php } if(isset($_SESSION['login'])){ ?>
             <section class="undernav">
                 <a href="profil.php"><img src="img/button.png"></a>
-                <a href="profil.php">USER PROFIL</a>
+                <a href="profil.php"><h1>USER PROFIL</h1></a>
             </section>
              <section class="undernav">
                 <a href="commentaire.php"><img src="img/button.png"></a>
@@ -42,8 +42,8 @@
              </section>
             <?php } ?>
             <section class="undernav">
-                <a href="livreor.php"><img src="img/button.png"></a>
-                <a href="livreor.php">LIVRE D'OR</a>
+                <a href="livre-or.php"><img src="img/button.png"></a>
+                <a href="livre-or.php">LIVRE D'OR</a>
             </section>
         </nav>
     </header>
@@ -143,7 +143,7 @@
             <a href="profil.php">USER PROFIL</a>
             <a href="commentaire.php">COMMENTAIRE</a>
             <?php } ?>
-            <a href="livreor.php">LIVRE D'OR</a>
+            <a href="livre-or.php">LIVRE D'OR</a>
         </nav>
         <article>
             <p>Copyright 2019 Coding School | All Rights Reserved | Project by Thierry & Nicolas.</p>
