@@ -34,8 +34,11 @@
                 <a href="commentaire.php"><img src="img/button.png"></a>
                 <a href="commentaire.php">COMMENTAIRE</a>
             </section>
-            <section class="undernav">
-             <input class="mybutton"  name="deco" value="Deconnexion" type="submit" />
+           <section class="undernav">
+             <form action="index.php" method="post">
+             <input type="submit" class="submit1"  name="deco" value="Deconnexion" />
+             </form>
+             <a href="#">DECONNEXION</a>
              </section>
             <?php } ?>
             <section class="undernav">
@@ -54,7 +57,7 @@
 
             if (isset($_SESSION['login'])) 
             {
-                $connexion = mysqli_connect("localhost", "root", "", "moduleconnexion"); # Connexion à notre base de données.
+                $connexion = mysqli_connect("localhost", "root", "", "livreor"); # Connexion à notre base de données.
                 $requete = "SELECT * FROM utilisateurs WHERE login='" . $_SESSION['login'] . "'"; # Préparation de la requête;
                 $query = mysqli_query($connexion, $requete); # Execution de la requête;
                 $resultat = mysqli_fetch_assoc($query); # Récupération des résultats de la requête;
@@ -64,10 +67,6 @@
                 <form class="form_profil" action="profil.php" method="post">
                     <label> Login </label>
                     <input type="text" name="login" value=<?php echo $resultat['login']; ?> />
-                    <label> Prénom </label>
-                    <input type="text" name="prenom" value=<?php echo $resultat['prenom']; ?> />
-                    <label> Nom </label>
-                    <input type="text" name="nom" value=<?php echo $resultat['nom']; ?> />
                     <input id="prodId" name="ID" type="hidden" value=<?php echo $resultat['id']; ?> />
                     <input class="mybutton" type="submit" name="modifier" value="Modifier" />
                 </form>
@@ -76,8 +75,6 @@
                     if (isset($_POST['modifier']) ) 
                     {
                          $login = $_POST["login"];
-                         $prenom = $_POST["prenom"];
-                         $nom = $_POST["nom"];
                          $req = "SELECT login FROM utilisateurs WHERE login = '$login'";
                          $req3 = mysqli_query($connexion, $req);
                          $veriflog = mysqli_fetch_all($req3);

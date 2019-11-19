@@ -35,7 +35,10 @@
                 <a href="commentaire.php">COMMENTAIRE</a>
             </section>
             <section class="undernav">
-             <input class="mybutton"  name="deco" value="Deconnexion" type="submit" />
+             <form action="index.php" method="post">
+            <input type="submit" class="submit1"  name="deco" value="Deconnexion" />
+             </form>
+             <a href="#">DECONNEXION</a>
              </section>
             <?php } ?>
             <section class="undernav">
