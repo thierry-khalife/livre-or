@@ -34,6 +34,9 @@
                 <a href="commentaire.php"><img src="img/button.png"></a>
                 <a href="commentaire.php">COMMENTAIRE</a>
             </section>
+             <section class="undernav">
+             <input class="mybutton"  name="deco" value="Deconnexion" type="submit" />
+             </section>
             <?php } ?>
             <section class="undernav">
                 <a href="livreor.php"><img src="img/button.png"></a>
