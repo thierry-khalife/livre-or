@@ -69,8 +69,6 @@
                 if (isset($_POST["valider"])) 
                 {
                     $login = $_POST["login"];
-                    $prenom = $_POST["prenom"];
-                    $nom = $_POST["nom"];
                     $mdp = password_hash($_POST["mdp"], PASSWORD_BCRYPT, array('cost' => 12));
                     $connexion = mysqli_connect("localhost", "root", "", "livreor");
                     $requete3 = "SELECT login FROM utilisateurs WHERE login = '$login'";
