@@ -16,6 +16,7 @@
                     {
                         $_SESSION['login'] = $_POST['login'];
                         $_SESSION['password'] = $_POST['password'];
+                        header('Location:index.php');
                     }
             else {
                 $ismdpwrong = true;
