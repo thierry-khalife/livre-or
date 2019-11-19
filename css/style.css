@@ -1,0 +1,139 @@
+body{
+	margin: 0;
+	height: 100vh;
+	background-image: url('../img/bg.jpg');
+	background-repeat: no-repeat; 
+	background-size: cover;
+	background-color: #C50012;
+}
+main{
+	display: flex;
+	justify-content: space-around;
+	flex-grow:1;
+}
+header{
+	height: 150px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;	
+	padding-top: 150px;
+	padding-left: 100px;
+	
+}
+header img{
+	width: 150px;
+	height: 100px;
+}
+#logo{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 30px;
+    font-weight: bold;
+}
+#logo a{
+	color: black;
+	text-decoration: none;
+}
+#logo:hover{
+	opacity: 0.3;
+}
+.nav{
+	display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 300px;
+}
+.nav img{
+	width: 40px;
+	height: 40px;
+}
+.nav a{
+	color: black;
+	text-decoration: none;
+}
+.undernav{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.undernav:hover{
+	opacity: 0.3;
+}
+.rightsidebar{
+	background-color: rgba(255, 255, 255, 0.3);
+	margin : 20px;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border : solid 2px;
+	border-radius: 20px;
+	width: 25%;
+}
+.rightsidebar img{
+	height: 200px;
+	width: 200px;
+}
+.rightsidebar img:hover{
+    opacity: 0.3;
+}
+.rightsidebar a{
+	color: black;
+	text-decoration: none;
+}
+.rightsidebar a:hover{
+	opacity: 0.3;
+}
+.leftsidebar{
+	background-color: rgba(255, 255, 255, 0.3);
+	margin : 20px;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border : solid 2px;
+	border-radius: 20px;
+	width: 75%;
+}
+.leftsidebar img{
+	height: 300px;
+	width: 300px;
+}
+.leftsidebar img:hover{
+    opacity: 0.3;
+}
+.leftsidebar a{
+	color: black;
+	text-decoration: none;
+}
+.leftsidebar a:hover{
+	opacity: 0.3;
+}
+.navfooter{
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 500px;
+
+}
+.navfooter a{
+	color: black;
+	text-decoration: none;
+}
+.navfooter a:hover{
+	color: white;
+	opacity: 0.3;
+}
+footer{
+	background-color: white;
+	box-shadow: 1px 5px 10px white;
+	width: 100%;
+	height: 50px;
+	display: flex;
+	justify-content: space-around;
+}
