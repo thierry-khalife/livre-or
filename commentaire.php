@@ -13,6 +13,7 @@
         $msg = $_POST['message'];
         $requete2 = "INSERT INTO commentaires (commentaire, id_utilisateur, date) VALUES ('$msg', ".$resultat[0][0].", '".date('Y-m-d')."')";
         $query2 = mysqli_query($connexion, $requete2);
+        header('Location: livre-or.php');
 
         mysqli_close($connexion);
     }
@@ -25,7 +26,7 @@
 
 <html>
 <head>
-    <title>Livre D'OR - Connexion</title>
+    <title>Livre D'OR - Commentaire</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
