@@ -1,5 +1,6 @@
 <?php
 
+    session_start();
     $ismdpwrong = false;
     $isIDinconnu = false;
     $ischampremplis = false;
@@ -11,11 +12,10 @@
         $resultat = mysqli_fetch_all($query);
 
         if ( !empty($resultat) ) {
-            if ( password_verify($_POST['password'], $resultat['password']) )
+            if ( password_verify($_POST['password'], $resultat[0][2]) )
                     {
                         $_SESSION['login'] = $_POST['login'];
                         $_SESSION['password'] = $_POST['password'];
-                        header('Location:index.php');
                     }
             else {
                 $ismdpwrong = true;
