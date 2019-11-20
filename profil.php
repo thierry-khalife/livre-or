@@ -40,16 +40,16 @@
                 <?php 
                     if (isset($_POST['modifier']) ) 
                     {
-                        if ($_POST["passwordx"] != $_POST["passwordconf"]) 
-                        {
+                         if ($_POST["passwordx"] != $_POST["passwordconf"]) 
+                         {
                           echo "Attention ! Mot de passe différents";
-                        } 
-                       elseif(isset($_POST['passwordx'])){
+                         } 
+                         elseif(isset($_POST['passwordx']) && !empty($_POST['passwordx'])){
                             $pwdx = password_hash($_POST['passwordx'], PASSWORD_BCRYPT, array('cost' => 12));
                             $updatepwd = "UPDATE utilisateurs SET password = '$pwdx' WHERE id = '" . $resultat['id'] . "'";
                             $query2 = mysqli_query($connexion, $updatepwd); # Execution de la requête;
                             header('Location:profil.php');
-                        }
+                         }
                          $login = $_POST["login"];
                          $req = "SELECT login FROM utilisateurs WHERE login = '$login'";
                          $req3 = mysqli_query($connexion, $req);
