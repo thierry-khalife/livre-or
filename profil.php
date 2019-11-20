@@ -10,45 +10,7 @@
 </head>
 
 <body>
- <header>
-        <nav class="nav">
-             <section class="undernav">
-                <a href="index.php"><img src="img/button.png"></a>
-                <a href="index.php">HOME</a>
-            </section>
-            <?php if(!isset($_SESSION['login'])){ ?>
-            <section class="undernav">
-                <a href="inscription.php"><img src="img/button.png"></a>
-                <a href="inscription.php">INSCRIPTION</a>
-            </section>
-            <section class="undernav">
-                <a href="connexion.php"><img src="img/button.png"></a>
-                <a href="connexion.php">CONNEXION</a>
-            </section>
-            <?php } if(isset($_SESSION['login'])){ ?>
-            <section class="undernav">
-                <a href="profil.php"><img src="img/button.png"></a>
-                <a href="profil.php"><h1>USER PROFIL</h1></a>
-            </section>
-             <section class="undernav">
-                <a href="commentaire.php"><img src="img/button.png"></a>
-                <a href="commentaire.php">COMMENTAIRE</a>
-            </section>
-           <section class="undernav">
-             <form action="index.php" method="post">
-             <input type="submit" class="submit1"  name="deco" value="Deconnexion" />
-             </form>
-             <a href="#">DECONNEXION</a>
-             </section>
-            <?php } ?>
-            <section class="undernav">
-                <a href="livre-or.php"><img src="img/button.png"></a>
-                <a href="livre-or.php">LIVRE D'OR</a>
-            </section>
-        </nav>
-    </header>
-
-
+ <?php include("header.php"); ?>
     <main>
 
         <section class="leftsidebar">
@@ -67,6 +29,10 @@
                 <form class="form_profil" action="profil.php" method="post">
                     <label> Login </label>
                     <input type="text" name="login" value=<?php echo $resultat['login']; ?> />
+                    <label> New Password </label>
+                    <input type="password" name="passwordx" />
+                    <label> Confirm New Password </label>
+                    <input type="password" name="passwordconf" />
                     <input id="prodId" name="ID" type="hidden" value=<?php echo $resultat['id']; ?> />
                     <input class="mybutton" type="submit" name="modifier" value="Modifier" />
                 </form>
@@ -74,6 +40,16 @@
                 <?php 
                     if (isset($_POST['modifier']) ) 
                     {
+                        if ($_POST["passwordx"] != $_POST["passwordconf"]) 
+                        {
+                          echo "Attention ! Mot de passe différents";
+                        } 
+                       elseif(isset($_POST['passwordx'])){
+                            $pwdx = password_hash($_POST['passwordx'], PASSWORD_BCRYPT, array('cost' => 12));
+                            $updatepwd = "UPDATE utilisateurs SET password = '$pwdx' WHERE id = '" . $resultat['id'] . "'";
+                            $query2 = mysqli_query($connexion, $updatepwd); # Execution de la requête;
+                            header('Location:profil.php');
+                        }
                          $login = $_POST["login"];
                          $req = "SELECT login FROM utilisateurs WHERE login = '$login'";
                          $req3 = mysqli_query($connexion, $req);
@@ -94,33 +70,6 @@
                 ?>
         </section>
 
-         <section class="rightsidebar"> 
-                 <form class="form_profil" action="profil.php" method="post">
-                    <label> New Password </label>
-                    <input type="password" name="passwordx" />
-                    <label> Confirm New Password </label>
-                    <input type="password" name="passwordconf" />
-                    <input id="prodId" name="ID" type="hidden" value=<?php echo $resultat['id']; ?> />
-                    <input class="mybutton" type="submit" name="modifier2" value="Modifier MDP" />
-                </form>
-
-         <?php 
-                if (isset($_POST['modifier2'])) 
-                    {
-                       if ($_POST["passwordx"] != $_POST["passwordconf"]) 
-                          {
-                            echo "Attention ! Mot de passe différents";
-                          } 
-                       elseif(isset($_POST['passwordx'])){
-                            $pwdx = password_hash($_POST['passwordx'], PASSWORD_BCRYPT, array('cost' => 12));
-                            $updatepwd = "UPDATE utilisateurs SET password = '$pwdx' WHERE id = '" . $resultat['id'] . "'";
-                            $query2 = mysqli_query($connexion, $updatepwd); # Execution de la requête;
-                            header('Location:profil.php');
-                          }
-                    }
-    ?>
-      </section>
-        
     <?php
 
     } 
@@ -132,24 +81,7 @@
     ?>
     
     </main>
-
-   <footer>
-        <nav class="navfooter">
-            <a href="index.php">HOME</a>
-            <?php if(!isset($_SESSION['login'])){ ?>
-            <a href="inscription.php">INSCRIPTION</a>
-            <a href="connexion.php">CONNEXION</a>
-            <?php } if(isset($_SESSION['login'])){ ?>
-            <a href="profil.php">USER PROFIL</a>
-            <a href="commentaire.php">COMMENTAIRE</a>
-            <?php } ?>
-            <a href="livre-or.php">LIVRE D'OR</a>
-        </nav>
-        <article>
-            <p>Copyright 2019 Coding School | All Rights Reserved | Project by Thierry & Nicolas.</p>
-        </article>
-    </footer>
-
+<?php include("footer.php"); ?>
 </body>
 
 </html>
