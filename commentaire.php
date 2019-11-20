@@ -1,6 +1,7 @@
 <?php
 
     session_start();
+    date_default_timezone_set('Europe/Paris');
     $is10car = false;
 
     if ( isset($_POST['envoyer']) == true && isset($_POST['message']) && strlen($_POST['message']) >= 10 ) {
@@ -11,7 +12,7 @@
         $resultat = mysqli_fetch_all($query);
 
         $msg = $_POST['message'];
-        $requete2 = "INSERT INTO commentaires (commentaire, id_utilisateur, date) VALUES ('$msg', ".$resultat[0][0].", '".date('Y-m-d')."')";
+        $requete2 = "INSERT INTO commentaires (commentaire, id_utilisateur, date) VALUES ('$msg', ".$resultat[0][0].", '".date("Y-m-d H:i:s")."')";
         $query2 = mysqli_query($connexion, $requete2);
 
         mysqli_close($connexion);

@@ -12,10 +12,7 @@
 <body>
     <?php include("header.php"); ?>
     <main>
-         <section class="leftsidebar">
-           
-         </section>
-          <section class="rightsidebar">
+          <section class="leftsidebar">
                <?php
 
         date_default_timezone_set('Europe/Paris');
@@ -29,6 +26,7 @@
             }
             else{
                 echo "<p>Vous êtes connecté en tant qu'utilisateur. Accédez à votre page de <a href=\"profil.php\">PROFIL</a></p>";
+                echo "<p>Ajouter un commentaire dans notre : <a href=\"livre-or.php\">LIVRE D'OR</a></p>";
             }
 
             echo "<form action=\"index.php\" method=\"post\">
