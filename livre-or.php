@@ -4,7 +4,8 @@ $cnx = mysqli_connect("localhost", "root", "", "livreor");
 $requete1 = "SELECT * FROM commentaires";
 $query1 = mysqli_query($cnx, $requete1);
 $resultat = mysqli_fetch_all($query1, MYSQLI_ASSOC);
-mysqli_close($cnx);
+
+
 
 ?>
 
@@ -21,30 +22,23 @@ mysqli_close($cnx);
 <?php include("header.php"); ?>
     <main>
          <section class="leftsidebar">
-           <?php
+          <?php
 
-      $i = 0;
-          echo "<table border>";
-          echo "<thead><tr>";
           $taille = sizeof($resultat) - 1;
-          foreach ($resultat[$taille] as $key => $value) 
-          {
-            echo "<th>{$key}</th>";
+          $a = 0;
+          while ($a <= $taille) {
+              $datesql = $resultat[$a]['date'];
+              $newdate = date('d-m-Y à H:i:s', strtotime($datesql));
+              $iduser = $resultat[$a]['id_utilisateur'];
+              $requetelogin = "SELECT login FROM utilisateurs WHERE id=$iduser";
+              $query2 = mysqli_query($cnx, $requetelogin);
+              $resultatlogin = mysqli_fetch_all($query2, MYSQLI_ASSOC);
+              echo "Posté le : ".$newdate;
+              echo " par : ".$resultatlogin[0]["login"]."<br>";
+              echo "Commentaire : ".$resultat[$a]['commentaire']."<br>";
+              echo "<br>";
+              $a++;
           }
-          echo "</tr></thead>";
-          echo "<tbody>";
-          while ($i <= $taille) 
-          {
-            echo "<tr>";
-            foreach ($resultat[$i] as $key => $value) 
-            {
-              echo "<td>{$value}</td>";
-            }
-            echo "</tr>";
-            $i++;
-          }
-
-          echo "</tbody></table>";
           if (!empty($_SESSION['login'])) 
           {
             echo "<p>Vous êtes connecté en tant qu'utilisateur. Ajouter un commentaire en visitant la page <a href=\"commentaire.php\">COMMENTAIRE</a></p>";
@@ -90,7 +84,8 @@ mysqli_close($cnx);
         ?>
          </section>
     </main>
-<?php include("footer.php"); ?>
+<?php include("footer.php"); 
+mysqli_close($cnx);?>
 </body>
 
 </html>
