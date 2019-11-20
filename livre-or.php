@@ -1,10 +1,9 @@
 <?php session_start(); 
 
 $cnx = mysqli_connect("localhost", "root", "", "livreor");
+
 $requete1 = "SELECT * FROM commentaires";
-$query1 = mysqli_query($cnx, $requete1);
-$resultat = mysqli_fetch_all($query1, MYSQLI_ASSOC);
-mysqli_close($cnx);
+
 
 ?>
 
@@ -58,36 +57,28 @@ mysqli_close($cnx);
 
     <main>
          <section class="leftsidebar">
-           <?php
+             <h1>LIVRE D'OR</h1>
+             <table>
+        <?php
+            $query1 = mysqli_query($cnx, $requete1);
 
-      $i = 0;
-          echo "<table border>";
-          echo "<thead><tr>";
-          $taille = sizeof($resultat) - 1;
-          foreach ($resultat[$taille] as $key => $value) 
-          {
-            echo "<th>{$key}</th>";
-          }
-          echo "</tr></thead>";
-          echo "<tbody>";
-          while ($i <= $taille) 
-          {
-            echo "<tr>";
-            foreach ($resultat[$i] as $key => $value) 
-            {
-              echo "<td>{$value}</td>";
-            }
-            echo "</tr>";
-            $i++;
-          }
-
-          echo "</tbody></table>";
-          if (!empty($_SESSION['login'])) 
-          {
-            echo "<p>Vous êtes connecté en tant qu'utilisateur. Ajouter un commentaire en visitant la page <a href=\"commentaire.php\">COMMENTAIRE</a></p>";
-          }
-
-      ?>
+                while ($resultat = mysqli_fetch_assoc($query1)) {
+                    $idutilisateur = $resultat['id_utilisateur'];
+                    $requete2 = "SELECT login FROM utilisateurs WHERE id=$idutilisateur";
+                    $query2 = mysqli_query($cnx, $requete2);
+                    $resultat2 = mysqli_fetch_assoc($query2);
+        ?>
+                    <tr>
+                        <td>
+                            <?php echo "<b>".$resultat2['login']."</b> le <i>".$resultat['date']."</i>"; ?><br />
+                            <?php echo $resultat['commentaire']; ?><br />
+                        </td>
+                    </tr>
+                <?php
+                }
+            mysqli_close($cnx);
+        ?>
+        </table>
          </section>
           <section class="rightsidebar">
                <?php
