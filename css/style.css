@@ -18,9 +18,8 @@ main{
 	flex-grow:1;
 }
 header{
-	background-image: url('../img/header.jpg');
+	background-image: url('../img/header.png');
 	background-size: 100% 100%;
-	height: 250px;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;	
@@ -50,7 +49,8 @@ header img{
 	display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 100%;
+	width: 100%;
+	padding-bottom: 28px;
 
 }
 .nav img{
@@ -143,7 +143,7 @@ header img{
 }
 .submit1{ 
 	border:none;
-	background:transparent url('../img/button.png');
+	background:transparent url('../img/candledeco.png');
 	background-size: cover;
 	background-repeat:no-repeat;
     width: 43px; 

@@ -1,8 +1,10 @@
 <?php session_start(); 
 
 $cnx = mysqli_connect("localhost", "root", "", "livreor");
-
 $requete1 = "SELECT * FROM commentaires";
+$query1 = mysqli_query($cnx, $requete1);
+$resultat = mysqli_fetch_all($query1, MYSQLI_ASSOC);
+
 
 
 ?>
@@ -17,68 +19,32 @@ $requete1 = "SELECT * FROM commentaires";
 </head>
 
 <body>
- <header>
-        <nav class="nav">
-             <section class="undernav">
-                <a href="index.php"><img src="img/button.png"></a>
-                <a href="index.php">HOME</a>
-            </section>
-            <?php if(!isset($_SESSION['login'])){ ?>
-            <section class="undernav">
-                <a href="inscription.php"><img src="img/button.png"></a>
-                <a href="inscription.php">INSCRIPTION</a>
-            </section>
-            <section class="undernav">
-                <a href="connexion.php"><img src="img/button.png"></a>
-                <a href="connexion.php">CONNEXION</a>
-            </section>
-            <?php } if(isset($_SESSION['login'])){ ?>
-            <section class="undernav">
-                <a href="profil.php"><img src="img/button.png"></a>
-                <a href="profil.php">USER PROFIL</a>
-            </section>
-             <section class="undernav">
-                <a href="commentaire.php"><img src="img/button.png"></a>
-                <a href="commentaire.php">COMMENTAIRE</a>
-            </section>
-            <section class="undernav">
-             <form action="index.php" method="post">
-             <input type="submit" class="submit1"  name="deco" value="Deconnexion" />
-             </form>
-             <a href="#">DECONNEXION</a>
-             </section>
-            <?php } ?>
-            <section class="undernav">
-                <a href="livre-or.php"><img src="img/button.png"></a>
-                <a href="livre-or.php"><h1>LIVRE D'OR</h1></a>
-            </section>
-        </nav>
-    </header>
-
+<?php include("header.php"); ?>
     <main>
          <section class="leftsidebar">
-             <h1>LIVRE D'OR</h1>
-             <table>
-        <?php
-            $query1 = mysqli_query($cnx, $requete1);
+          <?php
 
-                while ($resultat = mysqli_fetch_assoc($query1)) {
-                    $idutilisateur = $resultat['id_utilisateur'];
-                    $requete2 = "SELECT login FROM utilisateurs WHERE id=$idutilisateur";
-                    $query2 = mysqli_query($cnx, $requete2);
-                    $resultat2 = mysqli_fetch_assoc($query2);
-        ?>
-                    <tr>
-                        <td>
-                            <?php echo "<b>".$resultat2['login']."</b> le <i>".$resultat['date']."</i>"; ?><br />
-                            <?php echo $resultat['commentaire']; ?><br />
-                        </td>
-                    </tr>
-                <?php
-                }
-            mysqli_close($cnx);
-        ?>
-        </table>
+          $taille = sizeof($resultat) - 1;
+          $a = 0;
+          while ($a <= $taille) {
+              $datesql = $resultat[$a]['date'];
+              $newdate = date('d-m-Y à H:i:s', strtotime($datesql));
+              $iduser = $resultat[$a]['id_utilisateur'];
+              $requetelogin = "SELECT login FROM utilisateurs WHERE id=$iduser";
+              $query2 = mysqli_query($cnx, $requetelogin);
+              $resultatlogin = mysqli_fetch_all($query2, MYSQLI_ASSOC);
+              echo "Posté le : ".$newdate;
+              echo " par : ".$resultatlogin[0]["login"]."<br>";
+              echo "Commentaire : ".$resultat[$a]['commentaire']."<br>";
+              echo "<br>";
+              $a++;
+          }
+          if (!empty($_SESSION['login'])) 
+          {
+            echo "<p>Vous êtes connecté en tant qu'utilisateur. Ajouter un commentaire en visitant la page <a href=\"commentaire.php\">COMMENTAIRE</a></p>";
+          }
+
+      ?>
          </section>
           <section class="rightsidebar">
                <?php
@@ -118,24 +84,8 @@ $requete1 = "SELECT * FROM commentaires";
         ?>
          </section>
     </main>
-
-    <footer>
-        <nav class="navfooter">
-            <a href="index.php">HOME</a>
-            <?php if(!isset($_SESSION['login'])){ ?>
-            <a href="inscription.php">INSCRIPTION</a>
-            <a href="connexion.php">CONNEXION</a>
-            <?php } if(isset($_SESSION['login'])){ ?>
-            <a href="profil.php">USER PROFIL</a>
-            <a href="commentaire.php">COMMENTAIRE</a>
-            <?php } ?>
-            <a href="livre-or.php">LIVRE D'OR</a>
-        </nav>
-        <article>
-            <p>Copyright 2019 Coding School | All Rights Reserved | Project by Thierry & Nicolas.</p>
-        </article>
-    </footer>
-
+<?php include("footer.php"); 
+mysqli_close($cnx);?>
 </body>
 
 </html>
