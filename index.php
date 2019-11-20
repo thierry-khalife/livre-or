@@ -14,7 +14,7 @@
         <nav class="nav">
              <section class="undernav">
                 <a href="index.php"><img src="img/button.png"></a>
-                <a href="index.php">HOME</a>
+                <a href="index.php"><h1>HOME</h1></a>
             </section>
             <?php if(!isset($_SESSION['login'])){ ?>
             <section class="undernav">
@@ -34,10 +34,16 @@
                 <a href="commentaire.php"><img src="img/button.png"></a>
                 <a href="commentaire.php">COMMENTAIRE</a>
             </section>
+            <section class="undernav">
+             <form action="index.php" method="post">
+             <input type="submit" class="submit1"  name="deco" value="Deconnexion" />
+             </form>
+             <a href="#">DECONNEXION</a>
+             </section>
             <?php } ?>
             <section class="undernav">
-                <a href="livreor.php"><img src="img/button.png"></a>
-                <a href="livreor.php">LIVRE D'OR</a>
+                <a href="livre-or.php"><img src="img/button.png"></a>
+                <a href="livre-or.php">LIVRE D'OR</a>
             </section>
         </nav>
     </header>
@@ -87,11 +93,15 @@
 
     <footer>
         <nav class="navfooter">
+            <a href="index.php">HOME</a>
+            <?php if(!isset($_SESSION['login'])){ ?>
             <a href="inscription.php">INSCRIPTION</a>
             <a href="connexion.php">CONNEXION</a>
-            <a href="profil.php">MEMBER PROFIL</a>
-            <a href="livreor.php">LIVRE D'OR</a>
+            <?php } if(isset($_SESSION['login'])){ ?>
+            <a href="profil.php">USER PROFIL</a>
             <a href="commentaire.php">COMMENTAIRE</a>
+            <?php } ?>
+            <a href="livre-or.php">LIVRE D'OR</a>
         </nav>
         <article>
             <p>Copyright 2019 Coding School | All Rights Reserved | Project by Thierry & Nicolas.</p>
