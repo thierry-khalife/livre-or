@@ -1,23 +1,18 @@
 <?php session_start(); 
 
 $cnx = mysqli_connect("localhost", "root", "", "livreor");
-$requete1 = "SELECT * FROM commentaires";
+$requete1 = "SELECT * FROM commentaires ORDER BY date DESC";
 $query1 = mysqli_query($cnx, $requete1);
 $resultat = mysqli_fetch_all($query1, MYSQLI_ASSOC);
-
-
 
 ?>
 
 <!DOCTYPE html>
-
 <html>
-
 <head>
     <title>Livre D'OR</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-
 <body>
 <?php include("header.php"); ?>
     <main>
@@ -25,7 +20,7 @@ $resultat = mysqli_fetch_all($query1, MYSQLI_ASSOC);
           <img class="guirlandehaut" src="img/dividerguirlande.png">
           <h1>LIVRE D'OR</h1>
           <?php
-
+          
           $taille = sizeof($resultat) - 1;
           $a = 0;
           while ($a <= $taille) {
@@ -38,7 +33,21 @@ $resultat = mysqli_fetch_all($query1, MYSQLI_ASSOC);
               echo "<article id=\"commentaire\">";
               echo "<b><i>Posté le : </i></b>".$newdate;
               echo "<b><i> par : </i></b><u>".$resultatlogin[0]["login"]."</u><br>";
-              echo $resultat[$a]['commentaire']."<br><img id=\"divider\" src=\"img/div.png\">";
+              echo $resultat[$a]['commentaire'];
+              /*if($_SESSION['login'] == "admin")
+              {
+                 echo "<form action=\"livre-or.php\" method=\"post\">
+                 <input type=\"submit\" class=\"submit2\"  name=\"delete".$a."\" value=\"Delete\" />
+                 </form>";
+                  if (!isset($_POST["delete".$a])){
+                     $requeteiddel = "SELECT id FROM commentaires";
+                     $queryiddel = mysqli_query($cnx, $requeteiddel);
+                     $resultatiddel = mysqli_fetch_all($queryiddel,MYSQLI_ASSOC);
+                     $del = $resultatiddel[$a]['id'];
+                     
+                  }       
+              }*/
+              echo "<br><img id=\"divider\" src=\"img/div.png\">";
               echo "<br>";
               echo "</article>";
               $a++;
@@ -47,6 +56,11 @@ $resultat = mysqli_fetch_all($query1, MYSQLI_ASSOC);
           {
             echo "<p>Vous êtes connecté en tant qu'utilisateur. Ajouter un commentaire en visitant la page <a href=\"commentaire.php\">COMMENTAIRE</a></p>";
           }
+
+        /*$requetedel = "DELETE FROM commentaires WHERE id = $del";
+        $querydel = mysqli_query($cnx, $requetedel);
+        unset($_POST["delete"]);*/
+
         echo "<img class=\"guirlandebas\" src=\"img/dividerguirlandebas.png\">";
         ?>
         </section>
