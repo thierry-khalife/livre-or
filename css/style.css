@@ -157,6 +157,7 @@ footer{
 	display: flex;
 	justify-content: space-around;
 	color: black;
+	font-family: 'Mountains of Christmas', cursive;
 }
 #divider{
 	height: 70px;
