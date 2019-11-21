@@ -45,6 +45,7 @@
     <main>
         <section class="leftsidebar">
     <?php
+    echo "<img class=\"guirlandehaut\" src=\"img/dividerguirlande.png\">";
     if ( !isset($_SESSION['login']) ) {
     ?>
         <form method="post" action="connexion.php">
@@ -76,6 +77,7 @@
         Vous êtes déjà connecté !
     <?php
     }
+    echo "<img class=\"guirlandebas\" src=\"img/dividerguirlandebas.png\">";
     ?>
         </section>
     </main>

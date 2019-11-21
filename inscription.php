@@ -13,8 +13,8 @@
 <?php include("header.php"); ?>
     <main>
         <section class="leftsidebar">
-
             <?php 
+            echo "<img class=\"guirlandehaut\" src=\"img/dividerguirlande.png\">";
             if (isset($_SESSION["login"])) 
             {
                 echo "Bonjour, " . $_SESSION["login"] . " vous êtes déja connecté impossible de s'inscrire.<br>";
@@ -60,7 +60,7 @@
                     }
                 }
             }
-
+            echo "<img class=\"guirlandebas\" src=\"img/dividerguirlandebas.png\">";
             ?>
 
         </section>

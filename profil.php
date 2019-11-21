@@ -5,7 +5,7 @@
 <html>
 
 <head>
-    <title>Inscription - Livre D'OR</title>
+    <title>Profil - Livre D'OR</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
@@ -14,9 +14,8 @@
     <main>
 
         <section class="leftsidebar">
-
             <?php
-
+            echo "<img class=\"guirlandehaut\" src=\"img/dividerguirlande.png\">";
             if (isset($_SESSION['login'])) 
             {
                 $connexion = mysqli_connect("localhost", "root", "", "livreor"); # Connexion à notre base de données.
@@ -66,7 +65,7 @@
                                 header("Location:profil.php");
                             }
                     }
-
+                echo "<img class=\"guirlandebas\" src=\"img/dividerguirlandebas.png\">";
                 ?>
         </section>
 

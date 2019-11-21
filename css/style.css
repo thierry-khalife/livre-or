@@ -92,13 +92,6 @@ header img{
 	border-radius: 40px;
 	max-height: 400px;
 }
-.rightsidebar img{
-	height: 200px;
-	width: 200px;
-}
-.rightsidebar img:hover{
-    opacity: 0.3;
-}
 .rightsidebar a{
 	color: white;
 	text-decoration: underline;
@@ -172,7 +165,10 @@ footer{
 #commentaire{
 	text-align: center;
 }
-
+#icones{
+	height: 35px;
+	width: 35px;
+}
 .mybutton {
 	display: inline-block;
 	-webkit-box-sizing:border-box;
@@ -251,13 +247,13 @@ footer{
 }
 
 .guirlandehaut {
-	width: 800px;
+	width: 700px;
 	height: 160px;
 	margin-bottom: 20px;
 }
 
 .guirlandebas {
-	width: 800px;
+	width: 700px;
 	height: 160px;
 	margin-top: 40px;
 }
