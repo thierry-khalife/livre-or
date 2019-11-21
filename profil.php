@@ -25,7 +25,7 @@
 
                 ?>
 
-                <form class="form_profil" action="profil.php" method="post">
+                <form class="form_site" action="profil.php" method="post">
                     <label> Login </label>
                     <input type="text" name="login" value=<?php echo $resultat['login']; ?> />
                     <label> New Password </label>
@@ -33,6 +33,7 @@
                     <label> Confirm New Password </label>
                     <input type="password" name="passwordconf" />
                     <input id="prodId" name="ID" type="hidden" value=<?php echo $resultat['id']; ?> />
+                    <br>
                     <input class="mybutton" type="submit" name="modifier" value="Modifier" />
                 </form>
 

@@ -37,8 +37,9 @@
      echo "<img class=\"guirlandehaut\" src=\"img/dividerguirlande.png\">";
     if ( isset($_SESSION['login']) ) {
     ?>
-        <form method="post" action="commentaire.php">
-            <textarea placeholder="Votre message" name="message" ></textarea><br />
+        <form method="post" action="commentaire.php" class="form_site">
+            <label>VOTRE MESSAGE</label>
+            <textarea name="message" ></textarea><br />
             <input class= "mybutton" type="submit" value="Envoyer" name="envoyer" >
         </form>
         <?php
