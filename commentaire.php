@@ -38,7 +38,7 @@
     ?>
         <form method="post" action="commentaire.php">
             <textarea placeholder="Votre message" name="message" ></textarea><br />
-            <input type="submit" value="Envoyer" name="envoyer" >
+            <input class= "mybutton" type="submit" value="Envoyer" name="envoyer" >
         </form>
         <?php
         if ( $is10car == true ) {

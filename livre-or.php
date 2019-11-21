@@ -60,7 +60,7 @@ $resultat = mysqli_fetch_all($query1, MYSQLI_ASSOC);
             echo "<h1>Bonjour ".$_SESSION["login"]."</h1><br>";
             echo "<p>Vous êtes connecté en tant qu'utilisateur :</p>";
             echo "<p>Accédez à votre page de <a href=\"profil.php\">PROFIL</a>&nbsp&nbsp&nbsp&nbsp</p>";
-            echo "<p>Ajouter un commentaire en visitant la page <a href=\"commentaire.php\">COMMENTAIRE</a></p>";
+            echo "<p>Ajouter un commentaire en visitant la page <a href=\"commentaire.php\">COMMENTAIRE</a></p><br>";
             echo "<form action=\"index.php\" method=\"post\">
             <input class=\"mybutton\"  name=\"deco\" value=\"Deconnexion\" type=\"submit\" />
             </form>";

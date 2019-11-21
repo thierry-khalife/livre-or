@@ -50,7 +50,7 @@
         <form method="post" action="connexion.php">
             <input type="text" placeholder="Identifiant" name="login" ><br />
             <input type="password" placeholder="Mot de passe" name="password" ><br />
-            <input type="submit" value="Se connecter" name="connexion" >
+            <input class="mybutton" type="submit" value="Se connecter" name="connexion" >
         </form>
         <?php
         if ( $ismdpwrong == true ) {
