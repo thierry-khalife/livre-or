@@ -24,9 +24,17 @@ $resultat = mysqli_fetch_all($query1, MYSQLI_ASSOC);
           $taille = sizeof($resultat) - 1;
           $a = 0;
           while ($a <= $taille) {
+            if (isset($_POST["delete".$a])){
+                    $todel = $_POST["delete".$a];
+                    $requetedel = "DELETE FROM commentaires WHERE id = $todel";
+                    $querydel = mysqli_query($cnx, $requetedel);
+            }
+            else
+            {
               $datesql = $resultat[$a]['date'];
               $newdate = date('d-m-Y à H:i:s', strtotime($datesql));
               $iduser = $resultat[$a]['id_utilisateur'];
+              $idcom = $resultat[$a]['id'];
               $requetelogin = "SELECT login FROM utilisateurs WHERE id=$iduser";
               $query2 = mysqli_query($cnx, $requetelogin);
               $resultatlogin = mysqli_fetch_all($query2, MYSQLI_ASSOC);
@@ -34,22 +42,17 @@ $resultat = mysqli_fetch_all($query1, MYSQLI_ASSOC);
               echo "<b><i>Posté le : </i></b>".$newdate;
               echo "<b><i> par : </i></b><u>".$resultatlogin[0]["login"]."</u><br>";
               echo $resultat[$a]['commentaire'];
-              /*if($_SESSION['login'] == "admin")
+              if($_SESSION['login'] == "admin")
               {
                  echo "<form action=\"livre-or.php\" method=\"post\">
-                 <input type=\"submit\" class=\"submit2\"  name=\"delete".$a."\" value=\"Delete\" />
+                 <br><input type=\"submit\" class=\"submit2\"  name=\"delete".$a."\" value=\"$idcom\" />
                  </form>";
-                  if (!isset($_POST["delete".$a])){
-                     $requeteiddel = "SELECT id FROM commentaires";
-                     $queryiddel = mysqli_query($cnx, $requeteiddel);
-                     $resultatiddel = mysqli_fetch_all($queryiddel,MYSQLI_ASSOC);
-                     $del = $resultatiddel[$a]['id'];
-                     
-                  }       
-              }*/
+                        
+              }
               echo "<br><img id=\"divider\" src=\"img/div.png\">";
               echo "<br>";
               echo "</article>";
+            }
               $a++;
           }
           if (!empty($_SESSION['login'])) 
@@ -57,9 +60,10 @@ $resultat = mysqli_fetch_all($query1, MYSQLI_ASSOC);
             echo "<p>Vous êtes connecté en tant qu'utilisateur. Ajouter un commentaire en visitant la page <a href=\"commentaire.php\">COMMENTAIRE</a></p>";
           }
 
-        /*$requetedel = "DELETE FROM commentaires WHERE id = $del";
-        $querydel = mysqli_query($cnx, $requetedel);
-        unset($_POST["delete"]);*/
+        //echo $del;
+        //$requetedel = "DELETE FROM commentaires WHERE id = $del";
+        //$querydel = mysqli_query($cnx, $requetedel);
+        //unset($_POST["delete"]);
 
         echo "<img class=\"guirlandebas\" src=\"img/dividerguirlandebas.png\">";
         ?>
