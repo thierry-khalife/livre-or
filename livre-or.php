@@ -22,6 +22,7 @@ $resultat = mysqli_fetch_all($query1, MYSQLI_ASSOC);
 <?php include("header.php"); ?>
     <main>
          <section class="leftsidebar">
+          <img class="guirlandehaut" src="img/dividerguirlande.png">
           <h1>LIVRE D'OR</h1>
           <?php
 
@@ -46,18 +47,18 @@ $resultat = mysqli_fetch_all($query1, MYSQLI_ASSOC);
           {
             echo "<p>Vous êtes connecté en tant qu'utilisateur. Ajouter un commentaire en visitant la page <a href=\"commentaire.php\">COMMENTAIRE</a></p>";
           }
-
+        echo "<img class=\"guirlandebas\" src=\"img/dividerguirlandebas.png\">";
         ?>
         </section>
         <section class="rightsidebar">
        
         <?php
-
+    
         date_default_timezone_set('Europe/Paris');
         if(isset($_SESSION['login']))
         { 
             echo "Nous sommes le ".date('d-m-Y')." et il est ".date('H:i:s');
-            echo "<h1>Bonjour ".$_SESSION["login"]."</h1>";
+            echo "<h1><img id=\"icones\" src=\"img/candycane.png\">&nbsp Bonjour ".$_SESSION["login"]."&nbsp <img id=\"icones\" src=\"img/snowmanicon.png\"></h1>";
             echo "<p>Vous êtes connecté en tant qu'utilisateur :</p>";
             echo "<p>Accédez à votre page de <a href=\"profil.php\">PROFIL</a>&nbsp&nbsp&nbsp&nbsp</p>";
             echo "<p>Ajouter un commentaire en visitant la page <a href=\"commentaire.php\">COMMENTAIRE</a></p><br>";
@@ -68,7 +69,7 @@ $resultat = mysqli_fetch_all($query1, MYSQLI_ASSOC);
         else
         {
             echo "Nous sommes le ".date('d-m-Y')." et il est ".date('H:i:s');
-            echo "<h1>Bonjour Guest</h1>";
+            echo "<h1><img id=\"icones\" src=\"img/candycane.png\">&nbsp Bonjour Guest&nbsp <img id=\"icones\" src=\"img/snowmanicon.png\"></h1>";
             echo "<p>Pour pouvoir accéder à votre profil veuillez visiter la page : <a href=\"connexion.php\">CONNEXION</a></p>";
             echo "<p>Pas de compte ? Inscrivez-vous en remplissant le formulaire : <a href=\"inscription.php\">INSCRIPTION</a></p>";
         }

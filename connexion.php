@@ -45,11 +45,14 @@
     <main>
         <section class="leftsidebar">
     <?php
+    echo "<img class=\"guirlandehaut\" src=\"img/dividerguirlande.png\">";
     if ( !isset($_SESSION['login']) ) {
     ?>
-        <form method="post" action="connexion.php">
-            <input type="text" placeholder="Identifiant" name="login" ><br />
-            <input type="password" placeholder="Mot de passe" name="password" ><br />
+        <form class="form_site" method="post" action="connexion.php">
+            <label>IDENTIFIANT</label>
+            <input type="text" name="login" ><br />
+            <label>MOT DE PASSE</label>
+            <input type="password" name="password" ><br />
             <input class="mybutton" type="submit" value="Se connecter" name="connexion" >
         </form>
         <?php
@@ -76,6 +79,7 @@
         Vous êtes déjà connecté !
     <?php
     }
+    echo "<img class=\"guirlandebas\" src=\"img/dividerguirlandebas.png\">";
     ?>
         </section>
     </main>

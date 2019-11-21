@@ -13,8 +13,8 @@
 <?php include("header.php"); ?>
     <main>
         <section class="leftsidebar">
-
             <?php 
+            echo "<img class=\"guirlandehaut\" src=\"img/dividerguirlande.png\">";
             if (isset($_SESSION["login"])) 
             {
                 echo "Bonjour, " . $_SESSION["login"] . " vous êtes déja connecté impossible de s'inscrire.<br>";
@@ -25,13 +25,14 @@
             else 
             {
                 echo "<article id=\"titreinscription\"><h1>Veuillez rentrer vos informations</h1></article>
-                    <form action=\"inscription.php\" method=\"post\" class=\"form_profil\">
+                    <form class=\"form_site\" action=\"inscription.php\" method=\"post\">
                     <label>Login</label>
                     <input type=\"text\" name=\"login\" required>
                     <label>Password</label>
                     <input type=\"password\" name=\"mdp\" required>
                     <label>Password confirmation</label>
                     <input type=\"password\" name=\"mdpval\" required>
+                    <br>
                     <input class=\"mybutton\"  type=\"submit\" value=\"S'inscire\" name=\"valider\">
                     </form>";
 
@@ -60,7 +61,7 @@
                     }
                 }
             }
-
+            echo "<img class=\"guirlandebas\" src=\"img/dividerguirlandebas.png\">";
             ?>
 
         </section>

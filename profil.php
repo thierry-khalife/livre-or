@@ -5,7 +5,7 @@
 <html>
 
 <head>
-    <title>Inscription - Livre D'OR</title>
+    <title>Profil - Livre D'OR</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
@@ -14,9 +14,8 @@
     <main>
 
         <section class="leftsidebar">
-
             <?php
-
+            echo "<img class=\"guirlandehaut\" src=\"img/dividerguirlande.png\">";
             if (isset($_SESSION['login'])) 
             {
                 $connexion = mysqli_connect("localhost", "root", "", "livreor"); # Connexion à notre base de données.
@@ -26,7 +25,7 @@
 
                 ?>
 
-                <form class="form_profil" action="profil.php" method="post">
+                <form class="form_site" action="profil.php" method="post">
                     <label> Login </label>
                     <input type="text" name="login" value=<?php echo $resultat['login']; ?> />
                     <label> New Password </label>
@@ -34,6 +33,7 @@
                     <label> Confirm New Password </label>
                     <input type="password" name="passwordconf" />
                     <input id="prodId" name="ID" type="hidden" value=<?php echo $resultat['id']; ?> />
+                    <br>
                     <input class="mybutton" type="submit" name="modifier" value="Modifier" />
                 </form>
 
@@ -66,7 +66,7 @@
                                 header("Location:profil.php");
                             }
                     }
-
+                echo "<img class=\"guirlandebas\" src=\"img/dividerguirlandebas.png\">";
                 ?>
         </section>
 

@@ -26,7 +26,7 @@
 
 <html>
 <head>
-    <title>Livre D'OR - Connexion</title>
+    <title>Livre D'OR - Commentaire</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -34,10 +34,12 @@
     <main>
         <section class="leftsidebar">
     <?php
+     echo "<img class=\"guirlandehaut\" src=\"img/dividerguirlande.png\">";
     if ( isset($_SESSION['login']) ) {
     ?>
-        <form method="post" action="commentaire.php">
-            <textarea placeholder="Votre message" name="message" ></textarea><br />
+        <form method="post" action="commentaire.php" class="form_site">
+            <label>VOTRE MESSAGE</label>
+            <textarea name="message" ></textarea><br />
             <input class= "mybutton" type="submit" value="Envoyer" name="envoyer" >
         </form>
         <?php
@@ -54,6 +56,7 @@
         Vous devez être connecté pour accéder à cette page.
     <?php
     }
+    echo "<img class=\"guirlandebas\" src=\"img/dividerguirlandebas.png\">";
     ?>
         </section>
     </main>

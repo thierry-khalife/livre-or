@@ -92,13 +92,6 @@ header img{
 	border-radius: 40px;
 	max-height: 400px;
 }
-.rightsidebar img{
-	height: 200px;
-	width: 200px;
-}
-.rightsidebar img:hover{
-    opacity: 0.3;
-}
 .rightsidebar a{
 	color: white;
 	text-decoration: underline;
@@ -172,7 +165,10 @@ footer{
 #commentaire{
 	text-align: center;
 }
-
+#icones{
+	height: 35px;
+	width: 35px;
+}
 .mybutton {
 	display: inline-block;
 	-webkit-box-sizing:border-box;
@@ -251,13 +247,13 @@ footer{
 }
 
 .guirlandehaut {
-	width: 800px;
+	width: 700px;
 	height: 160px;
 	margin-bottom: 20px;
 }
 
 .guirlandebas {
-	width: 800px;
+	width: 700px;
 	height: 160px;
 	margin-top: 40px;
 }
@@ -266,3 +262,51 @@ footer{
 	height: 300px;
 	width: 300px;
 }
+.form_site{
+	display:flex;
+	flex-direction:column;
+	text-align: center;
+	font-family: 'Mountains of Christmas', cursive;
+    font-size: 20px;
+    width: 300px;
+    margin: 0;
+    border-radius: 50px;
+    padding: 15px;
+}
+.form_site input{
+	border-radius:8px;
+	padding:10px 20px;
+	margin-top: 10px;
+}
+.form_site input:focus {
+	outline:none;
+}
+.form_site input:hover{
+	background: #a61715;
+	text-shadow: 0 1px 2px rgba(0,0,0,0.75), 0 0 40px #FFF;
+	box-shadow:
+		inset 1px 1px 0px rgba(255,255,255,0.25), 
+		inset 0 0 6px #da3b2c, /* inner glow */
+		inset 0 80px 80px -40px #dd4330, /* gradient */
+		1px 1px 3px rgba(0,0,0,0.75); /* shadow */
+	color : white;
+  }
+
+.form_site textarea{
+	border-radius:8px;
+	padding:10px 20px;
+	margin-top: 10px;
+}
+.form_site textarea:focus {
+	outline:none;
+}
+.form_site textarea:hover{
+	background: #a61715;
+	text-shadow: 0 1px 2px rgba(0,0,0,0.75), 0 0 40px #FFF;
+	box-shadow:
+		inset 1px 1px 0px rgba(255,255,255,0.25), 
+		inset 0 0 6px #da3b2c, /* inner glow */
+		inset 0 80px 80px -40px #dd4330, /* gradient */
+		1px 1px 3px rgba(0,0,0,0.75); /* shadow */
+	color : white;
+  }
