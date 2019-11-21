@@ -12,7 +12,8 @@
         $resultat = mysqli_fetch_all($query);
 
         $msg = $_POST['message'];
-        $requete2 = "INSERT INTO commentaires (commentaire, id_utilisateur, date) VALUES ('$msg', ".$resultat[0][0].", '".date("Y-m-d H:i:s")."')";
+        $remsg = addslashes($msg);
+        $requete2 = "INSERT INTO commentaires (commentaire, id_utilisateur, date) VALUES ('$remsg', ".$resultat[0][0].", '".date("Y-m-d H:i:s")."')";
         $query2 = mysqli_query($connexion, $requete2);
 
         mysqli_close($connexion);
