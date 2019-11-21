@@ -57,7 +57,7 @@ $resultat = mysqli_fetch_all($query1, MYSQLI_ASSOC);
         if(isset($_SESSION['login']))
         { 
             echo "Nous sommes le ".date('d-m-Y')." et il est ".date('H:i:s');
-            echo "<h1>Bonjour ".$_SESSION["login"]."</h1><br>";
+            echo "<h1>Bonjour ".$_SESSION["login"]."</h1>";
             echo "<p>Vous êtes connecté en tant qu'utilisateur :</p>";
             echo "<p>Accédez à votre page de <a href=\"profil.php\">PROFIL</a>&nbsp&nbsp&nbsp&nbsp</p>";
             echo "<p>Ajouter un commentaire en visitant la page <a href=\"commentaire.php\">COMMENTAIRE</a></p><br>";
