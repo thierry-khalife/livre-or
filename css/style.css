@@ -19,7 +19,7 @@ main{
 }
 header{
 	background-image: url('../img/header.png');
-	background-size: 100% 100%;
+	background-size: 100% 200px;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;	
@@ -112,10 +112,7 @@ header img{
 	border-image-slice: 160;
 	border-radius: 40px;
 }
-.leftsidebar img{
-	height: 300px;
-	width: 300px;
-}
+
 .leftsidebar img:hover{
     opacity: 0.3;
 }
@@ -160,4 +157,21 @@ footer{
 	display: flex;
 	justify-content: space-around;
 	color: black;
+}
+
+.guirlandehaut {
+	width: 800px;
+	height: 160px;
+	margin-bottom: 20px;
+}
+
+.guirlandebas {
+	width: 800px;
+	height: 160px;
+	margin-top: 40px;
+}
+
+#perenoel {
+	height: 300px;
+	width: 300px;
 }
