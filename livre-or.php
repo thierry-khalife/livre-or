@@ -28,6 +28,7 @@ $resultat = mysqli_fetch_all($query1, MYSQLI_ASSOC);
                     $todel = $_POST["delete".$a];
                     $requetedel = "DELETE FROM commentaires WHERE id = $todel";
                     $querydel = mysqli_query($cnx, $requetedel);
+                    header('Location:livre-or.php');
             }
             else
             {
@@ -47,6 +48,7 @@ $resultat = mysqli_fetch_all($query1, MYSQLI_ASSOC);
                  echo "<form action=\"livre-or.php\" method=\"post\">
                  <br><input type=\"submit\" class=\"submit2\"  name=\"delete".$a."\" value=\"$idcom\" />
                  </form>";
+
                         
               }
               echo "<br><img id=\"divider\" src=\"img/div.png\">";
