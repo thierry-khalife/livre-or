@@ -14,10 +14,10 @@
     <main>
           <section class="leftsidebar">
                <?php
+        echo "<img class=\"guirlandehaut\" src=\"img/dividerguirlande.png\">";
         date_default_timezone_set('Europe/Paris');
         if(isset($_SESSION['login']))
         { 
-            echo "<img class=\"guirlandehaut\" src=\"img/dividerguirlande.png\">";
             echo "<img id=\"perenoel\" src=\"img/perenoelfloss.gif\">";
             echo "Nous sommes le ".date('d-m-Y')." et il est ".date('H:i:s');
             echo "<h1><img id=\"icones\" src=\"img/candycane.png\">&nbsp Bonjour ".$_SESSION["login"]."&nbsp <img id=\"icones\" src=\"img/snowmanicon.png\"></h1>";
@@ -26,7 +26,6 @@
             echo "<form action=\"index.php\" method=\"post\">
             <input class=\"mybutton\"  name=\"deco\" value=\"Deconnexion\" type=\"submit\" />
             </form>";
-            echo "<img class=\"guirlandebas\" src=\"img/dividerguirlandebas.png\">";
         }
         else
         {
@@ -44,6 +43,7 @@
          header('Location:index.php');
         }
         
+        echo "<img class=\"guirlandebas\" src=\"img/dividerguirlandebas.png\">";
         ?>
          </section>
     </main>
