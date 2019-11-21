@@ -22,6 +22,7 @@ $resultat = mysqli_fetch_all($query1, MYSQLI_ASSOC);
 <?php include("header.php"); ?>
     <main>
          <section class="leftsidebar">
+          <h1>LIVRE D'OR</h1>
           <?php
 
           $taille = sizeof($resultat) - 1;
@@ -33,10 +34,12 @@ $resultat = mysqli_fetch_all($query1, MYSQLI_ASSOC);
               $requetelogin = "SELECT login FROM utilisateurs WHERE id=$iduser";
               $query2 = mysqli_query($cnx, $requetelogin);
               $resultatlogin = mysqli_fetch_all($query2, MYSQLI_ASSOC);
-              echo "Posté le : ".$newdate;
-              echo " par : ".$resultatlogin[0]["login"]."<br>";
-              echo "Commentaire : ".$resultat[$a]['commentaire']."<br>";
+              echo "<article id=\"commentaire\">";
+              echo "<b><i>Posté le : </i></b>".$newdate;
+              echo "<b><i> par : </i></b><u>".$resultatlogin[0]["login"]."</u><br>";
+              echo $resultat[$a]['commentaire']."<br><img id=\"divider\" src=\"img/div.png\">";
               echo "<br>";
+              echo "</article>";
               $a++;
           }
           if (!empty($_SESSION['login'])) 
@@ -44,24 +47,20 @@ $resultat = mysqli_fetch_all($query1, MYSQLI_ASSOC);
             echo "<p>Vous êtes connecté en tant qu'utilisateur. Ajouter un commentaire en visitant la page <a href=\"commentaire.php\">COMMENTAIRE</a></p>";
           }
 
-      ?>
-         </section>
-          <section class="rightsidebar">
-               <?php
+        ?>
+        </section>
+        <section class="rightsidebar">
+       
+        <?php
 
         date_default_timezone_set('Europe/Paris');
         if(isset($_SESSION['login']))
         { 
             echo "Nous sommes le ".date('d-m-Y')." et il est ".date('H:i:s');
             echo "<h1>Bonjour ".$_SESSION["login"]."</h1><br>";
-
-            if($_SESSION['login'] == "admin"){
-                echo "<p>Vous êtes connecté en tant qu'administrateur et vous avez accès à la page <a href=\"admin.php\">ADMIN PANEL</a></p>";
-            }
-            else{
-                echo "<p>Vous êtes connecté en tant qu'utilisateur. Accédez à votre page de <a href=\"profil.php\">PROFIL</a></p>";
-            }
-
+            echo "<p>Vous êtes connecté en tant qu'utilisateur :</p>";
+            echo "<p>Accédez à votre page de <a href=\"profil.php\">PROFIL</a>&nbsp&nbsp&nbsp&nbsp</p>";
+            echo "<p>Ajouter un commentaire en visitant la page <a href=\"commentaire.php\">COMMENTAIRE</a></p>";
             echo "<form action=\"index.php\" method=\"post\">
             <input class=\"mybutton\"  name=\"deco\" value=\"Deconnexion\" type=\"submit\" />
             </form>";

@@ -83,6 +83,7 @@ header img{
 	border-image: url('../img/candy.png');
 	border-image-slice: 250;
 	border-radius: 40px;
+	max-height: 400px;
 }
 .rightsidebar img{
 	height: 200px;
@@ -93,7 +94,7 @@ header img{
 }
 .rightsidebar a{
 	color: white;
-	text-decoration: none;
+	text-decoration: underline;
 }
 .rightsidebar a:hover{
 	opacity: 0.3;
@@ -111,10 +112,6 @@ header img{
 	border-image: url('../img/candy.png');
 	border-image-slice: 160;
 	border-radius: 40px;
-}
-.leftsidebar img{
-	height: 300px;
-	width: 300px;
 }
 .leftsidebar img:hover{
     opacity: 0.3;
@@ -160,4 +157,11 @@ footer{
 	display: flex;
 	justify-content: space-around;
 	color: black;
+}
+#divider{
+	height: 70px;
+	width: 300px;
+}
+#commentaire{
+	text-align: center;
 }
