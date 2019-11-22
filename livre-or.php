@@ -108,6 +108,11 @@ $resultat2 = mysqli_fetch_all($query2, MYSQLI_ASSOC);
                     $querylike = mysqli_query($cnx, $requetelike);
                     header('Location: livre-or.php');
                 }
+                if ( isset($_SESSION['login']) && isset($_POST['likebutton'.$a]) && $resultat3[0]['COUNT(*)'] != "0" ) {
+                    $requeteresetlike = "DELETE FROM votes WHERE id_commentaire=$intidcom AND id_utilisateur=$intidmoi";
+                    $queryresetlike = mysqli_query($cnx, $requeteresetlike);
+                    header('Location: livre-or.php');
+                }
                 if ( isset($_SESSION['login']) && isset($_POST['dislikebutton'.$a]) && $resultat4[0]['COUNT(*)'] == "0" ) {
                     if ( $resultat3[0]['COUNT(*)'] == "1" ) {
                         $requeteresetdislike = "DELETE FROM votes WHERE id_commentaire=$intidcom AND id_utilisateur=$intidmoi";
@@ -116,7 +121,11 @@ $resultat2 = mysqli_fetch_all($query2, MYSQLI_ASSOC);
                     $requetedislike = "INSERT INTO votes (id_utilisateur, id_commentaire, valeur) VALUES ($intidmoi, $intidcom, -1)";
                     $querydislike = mysqli_query($cnx, $requetedislike);
                     header('Location: livre-or.php');
-                
+                }
+                if ( isset($_SESSION['login']) && isset($_POST['dislikebutton'.$a]) && $resultat4[0]['COUNT(*)'] != "0" ) {
+                    $requeteresetlike = "DELETE FROM votes WHERE id_commentaire=$intidcom AND id_utilisateur=$intidmoi";
+                    $queryresetlike = mysqli_query($cnx, $requeteresetlike);
+                    header('Location: livre-or.php');
                 }
                 if (isset($_POST["delete".$a])) {
                     $todel = $_POST["delete".$a];
