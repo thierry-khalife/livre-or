@@ -34,7 +34,6 @@
 ?>
 
 <!DOCTYPE html>
-
 <html>
 <head>
     <title>Livre D'OR - Connexion</title>
@@ -43,9 +42,9 @@
 <body>
     <?php include("header.php"); ?>
     <main>
-        <section class="leftsidebar">
+    <section class="leftsidebar">
+    <img class="guirlandehaut" src="img/dividerguirlande.png">
     <?php
-    echo "<img class=\"guirlandehaut\" src=\"img/dividerguirlande.png\">";
     if ( !isset($_SESSION['login']) ) {
     ?>
         <form class="form_site" method="post" action="connexion.php">
@@ -58,29 +57,28 @@
         <?php
         if ( $ismdpwrong == true ) {
         ?>
-            Identifiant ou mot de passe incorrect.
+            <p>Identifiant ou mot de passe incorrect.</p>
         <?php
         }
         elseif ( $isIDinconnu == true ) {
         ?>
-            Cet identifiant n'exsite pas.
+            <p>Cet identifiant n'exsite pas.</p>
         <?php
         }
         elseif ( $ischampremplis == true ) {
         ?>
-            Merci de remplir tous les champs!
+            <p>Merci de remplir tous les champs!</p>
         <?php
         }
     }
 
     elseif ( isset($_SESSION['login']) ) {
     ?>
-        ERREUR<br />
-        Vous êtes déjà connecté !
+        <p>ERREUR!  Vous êtes déjà connecté !</p>
     <?php
     }
-    echo "<img class=\"guirlandebas\" src=\"img/dividerguirlandebas.png\">";
     ?>
+        <img class="guirlandebas" src="img/dividerguirlandebas.png">";
         </section>
     </main>
    <?php include("footer.php"); ?>
