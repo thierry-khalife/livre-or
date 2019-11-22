@@ -34,10 +34,11 @@
  <?php include("header.php"); ?>
     <main>
         <section class="leftsidebar">
+            <img class="guirlandehaut" src="img/dividerguirlande.png">
     <?php
-     echo "<img class=\"guirlandehaut\" src=\"img/dividerguirlande.png\">";
     if ( isset($_SESSION['login']) ) {
     ?>
+        <img id="pncom" src="img/perenoelcom.gif">
         <form method="post" action="commentaire.php" class="form_site">
             <label>VOTRE MESSAGE</label>
             <textarea name="message" ></textarea><br />
@@ -46,19 +47,20 @@
         <?php
         if ( $is10car == true ) {
         ?>
-            Votre message doit comporter au moins 10 caractères.
+            <p>Votre message doit comporter au moins 10 caractères.</p>
         <?php
         }
     }
 
     elseif ( !isset($_SESSION['login']) ) {
     ?>
-        ERREUR<br />
-        Vous devez être connecté pour accéder à cette page.
+        <center><img src="img/erreurnoel.gif"><br />
+        <p><b>ERREUR</b><br />
+        Vous devez être connecté pour accéder à cette page.</p></center>
     <?php
     }
-    echo "<img class=\"guirlandebas\" src=\"img/dividerguirlandebas.png\">";
     ?>
+        <img class="guirlandebas" src="img/dividerguirlandebas.png">
         </section>
     </main>
 <?php include("footer.php"); ?>

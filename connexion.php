@@ -34,6 +34,7 @@
 ?>
 
 <!DOCTYPE html>
+
 <html>
 <head>
     <title>Livre D'OR - Connexion</title>
@@ -42,9 +43,9 @@
 <body>
     <?php include("header.php"); ?>
     <main>
-    <section class="leftsidebar">
-    <img class="guirlandehaut" src="img/dividerguirlande.png">
+        <section class="leftsidebar">
     <?php
+    echo "<img class=\"guirlandehaut\" src=\"img/dividerguirlande.png\">";
     if ( !isset($_SESSION['login']) ) {
     ?>
         <form class="form_site" method="post" action="connexion.php">
@@ -74,11 +75,13 @@
 
     elseif ( isset($_SESSION['login']) ) {
     ?>
-        <p>ERREUR!  Vous êtes déjà connecté !</p>
+        <center><img src="img/erreurnoel.gif"><br />
+        <p>ERREUR<br />
+        Vous êtes déjà connecté !</p></center>
     <?php
     }
     ?>
-        <img class="guirlandebas" src="img/dividerguirlandebas.png">";
+        <img class="guirlandebas" src="img/dividerguirlandebas.png">
         </section>
     </main>
    <?php include("footer.php"); ?>

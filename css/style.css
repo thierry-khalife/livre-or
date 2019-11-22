@@ -168,6 +168,7 @@ footer{
 	display: flex;
 	justify-content: space-around;
 	color: black;
+	font-family: 'Mountains of Christmas', cursive;
 }
 #divider{
 	height: 70px;
@@ -321,3 +322,109 @@ footer{
 		1px 1px 3px rgba(0,0,0,0.75); /* shadow */
 	color : white;
   }
+
+#likev {
+ 	font-size: 0;
+ 	width: 24px;
+ 	height: 24px;
+ 	border: none;
+ 	margin: 0;
+	padding: 0;
+	background: transparent;
+	background-image: url(../img/likev.png);
+	opacity: 1;
+}
+
+#likev:hover {
+	background-image: url(../img/likev.png);
+	opacity: 0.7;
+}
+
+#dislikev {
+ 	font-size: 0;
+ 	width: 24px;
+ 	height: 24px;
+ 	border: none;
+ 	margin: 0;
+	padding: 0;
+	background: transparent;
+	background-image: url(../img/dislikev.png); 
+}
+
+#dislikev:hover {
+	background-image: url(../img/dislikev.png);
+	opacity: 0.7;
+}
+
+#like {
+ 	font-size: 0;
+ 	width: 24px;
+ 	height: 24px;
+ 	border: none;
+ 	margin: 0;
+	padding: 0;
+	background: transparent;
+	background-image: url(../img/like.png);
+	opacity: 1;
+}
+
+#like:hover {
+	background-image: url(../img/like.png);
+	opacity: 0.7;
+}
+
+#dislike {
+ 	font-size: 0;
+ 	width: 24px;
+ 	height: 24px;
+ 	border: none;
+ 	margin: 0;
+	padding: 0;
+	background: transparent;
+	background-image: url(../img/dislike.png); 
+}
+
+#dislike:hover {
+	background-image: url(../img/dislike.png);
+	opacity: 0.7;
+}
+
+.resultatvotes {
+	line-height: 24px;
+}
+
+#formvote {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	width: 100px;
+	margin-top: 10px;
+}
+
+.submit2 { 
+	border:none;
+	background:transparent url('../img/delete.png');
+	background-size: cover;
+	background-repeat:no-repeat;
+    width: 30px; 
+	height: 30px;
+	font-size: 0px;
+    color: transparent;
+	cursor: pointer;
+}
+
+#phrasebvn {
+	font-size: 24px;
+	font-weight: bold;
+	font-family: 'Mountains of Christmas', cursive;
+	margin-top: 10px;
+}
+
+#btndecoinscri {
+	margin-top: 40px;
+}
+
+#pncom {
+	height: 250px;
+	width: 250px;
+}
