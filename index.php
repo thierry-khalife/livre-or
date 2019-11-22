@@ -22,7 +22,7 @@
             <img id="perenoel" src="img/perenoelfloss.gif">
             <?php
             echo "Nous sommes le ".date('d-m-Y')." et il est ".date('H:i:s');
-            echo "<h1><img id=\"icones\" src=\"img/candycane.png\">&nbsp Bonjour ".$_SESSION["login"]."&nbsp <img id=\"icones\" src=\"img/snowmanicon.png\"></h1>";
+            echo "<div id=\"phrasebvn\"><img id=\"icones\" src=\"img/candycane.png\">&nbsp Bonjour ".$_SESSION["login"]."&nbsp <img id=\"icones\" src=\"img/snowmanicon.png\"></div>";
             echo "<p>Vous êtes connecté en tant qu'utilisateur. Accédez à votre page de <a href=\"profil.php\">PROFIL</a></p>";
             ?>
             <p>Ajouter un commentaire dans notre : <a href="livre-or.php">LIVRE D'OR</a></p>
