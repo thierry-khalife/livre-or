@@ -35,6 +35,13 @@ $resultat2 = mysqli_fetch_all($query2, MYSQLI_ASSOC);
             $taille = sizeof($resultat) - 1;
             $a = 0;
             while ($a <= $taille) {
+                if (isset($_POST["delete".$a])){
+                    $todel = $_POST["delete".$a];
+                    $requetedel = "DELETE FROM commentaires WHERE id = $todel";
+                    $querydel = mysqli_query($cnx, $requetedel);
+                    header('Location:livre-or.php');
+                }
+                else {
                 $datesql = $resultat[$a]['date'];
                 $newdate = date('d-m-Y à H:i:s', strtotime($datesql));
                 $iduser = $resultat[$a]['id_utilisateur'];
@@ -87,6 +94,16 @@ $resultat2 = mysqli_fetch_all($query2, MYSQLI_ASSOC);
                         </div>
                     </form>
                 </article>
+                <article id="poubelle">
+                    <?php
+                    if($_SESSION['login'] == "admin")
+                    {
+                        echo "<form action=\"livre-or.php\" method=\"post\">
+                        <br><input type=\"submit\" class=\"submit2\"  name=\"delete".$a."\" value=\"$idcom\" />
+                        </form>";      
+                    }
+                    ?>
+                </article>
                 <img id="divider" src="img/div.png">
                 <?php
                 if ( isset($_SESSION['login']) && isset($_POST['likebutton'.$a]) && $resultat3[0]['COUNT(*)'] == "0" ) {
@@ -108,6 +125,7 @@ $resultat2 = mysqli_fetch_all($query2, MYSQLI_ASSOC);
                     header('Location: livre-or.php');
                 }
                 $a++;
+                }
             }
             if (!empty($_SESSION['login'])) 
             {
