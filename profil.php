@@ -1,4 +1,6 @@
-<?php session_start() ?>
+<?php
+session_start();
+?>
 
 <!DOCTYPE html>
 
@@ -14,9 +16,9 @@
     <main>
 
         <section class="leftsidebar">
+            <img class="guirlandehaut" src="img/dividerguirlande.png">
             <?php
-            echo "<img class=\"guirlandehaut\" src=\"img/dividerguirlande.png\">";
-            if (isset($_SESSION['login'])) 
+            if (isset($_SESSION['login']))
             {
                 $connexion = mysqli_connect("localhost", "root", "", "livreor"); # Connexion à notre base de données.
                 $requete = "SELECT * FROM utilisateurs WHERE login='" . $_SESSION['login'] . "'"; # Préparation de la requête;
@@ -42,21 +44,25 @@
                     {
                          if ($_POST["passwordx"] != $_POST["passwordconf"]) 
                          {
-                          echo "Attention ! Mot de passe différents";
-                         } 
-                         elseif(isset($_POST['passwordx']) && !empty($_POST['passwordx'])){
+                             ?>
+                            <p>Attention ! Mot de passe différents</p>
+                        <?php
+                        } 
+                        elseif(isset($_POST['passwordx']) && !empty($_POST['passwordx'])){
                             $pwdx = password_hash($_POST['passwordx'], PASSWORD_BCRYPT, array('cost' => 12));
                             $updatepwd = "UPDATE utilisateurs SET password = '$pwdx' WHERE id = '" . $resultat['id'] . "'";
                             $query2 = mysqli_query($connexion, $updatepwd); # Execution de la requête;
                             header('Location:profil.php');
-                         }
-                         $login = $_POST["login"];
-                         $req = "SELECT login FROM utilisateurs WHERE login = '$login'";
-                         $req3 = mysqli_query($connexion, $req);
-                         $veriflog = mysqli_fetch_all($req3);
-                         if(!empty($veriflog))
+                        }
+                        $login = $_POST["login"];
+                        $req = "SELECT login FROM utilisateurs WHERE login = '$login'";
+                        $req3 = mysqli_query($connexion, $req);
+                        $veriflog = mysqli_fetch_all($req3);
+                            if(!empty($veriflog))
                             {
-                               echo "Login deja utilisé, requete refusé.<br>";
+                                ?>
+                                <p>Login deja utilisé, requete refusé.<br /></p>
+                                <?php
                             }
                         if(empty($veriflog))
                             {
@@ -66,8 +72,8 @@
                                 header("Location:profil.php");
                             }
                     }
-                echo "<img class=\"guirlandebas\" src=\"img/dividerguirlandebas.png\">";
-                ?>
+                    ?>
+            <img class="guirlandebas" src="img/dividerguirlandebas.png">
         </section>
 
     <?php
@@ -75,11 +81,12 @@
     } 
     else 
     {
-        echo "Veuillez vous connecter pour accéder à votre page !";
+        ?>
+        <p>Veuillez vous connecter pour accéder à votre page !</p>
+        <?php
     }
-
     ?>
-    
+
     </main>
 <?php include("footer.php"); ?>
 </body>

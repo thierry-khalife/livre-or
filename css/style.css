@@ -387,4 +387,33 @@ footer{
 	flex-direction: row;
 	justify-content: space-around;
 	width: 100px;
+	margin-top: 10px;
+}
+
+.submit2 { 
+	border:none;
+	background:transparent url('../img/delete.png');
+	background-size: cover;
+	background-repeat:no-repeat;
+    width: 30px; 
+	height: 30px;
+	font-size: 0px;
+    color: transparent;
+	cursor: pointer;
+}
+
+#phrasebvn {
+	font-size: 24px;
+	font-weight: bold;
+	font-family: 'Mountains of Christmas', cursive;
+	margin-top: 10px;
+}
+
+#btndecoinscri {
+	margin-top: 40px;
+}
+
+#pncom {
+	height: 250px;
+	width: 250px;
 }

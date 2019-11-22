@@ -1,9 +1,9 @@
 <?php
+session_start();
 ob_start();
-session_start(); 
 
 $cnx = mysqli_connect("localhost", "root", "", "livreor");
-$requete1 = "SELECT * FROM commentaires";
+$requete1 = "SELECT * FROM commentaires ORDER BY date DESC";
 $query1 = mysqli_query($cnx, $requete1);
 $resultat = mysqli_fetch_all($query1, MYSQLI_ASSOC);
 
@@ -35,13 +35,6 @@ $resultat2 = mysqli_fetch_all($query2, MYSQLI_ASSOC);
             $taille = sizeof($resultat) - 1;
             $a = 0;
             while ($a <= $taille) {
-                if (isset($_POST["delete".$a])){
-                    $todel = $_POST["delete".$a];
-                    $requetedel = "DELETE FROM commentaires WHERE id = $todel";
-                    $querydel = mysqli_query($cnx, $requetedel);
-                    header('Location:livre-or.php');
-                }
-                else {
                 $datesql = $resultat[$a]['date'];
                 $newdate = date('d-m-Y à H:i:s', strtotime($datesql));
                 $iduser = $resultat[$a]['id_utilisateur'];
@@ -96,11 +89,11 @@ $resultat2 = mysqli_fetch_all($query2, MYSQLI_ASSOC);
                 </article>
                 <article id="poubelle">
                     <?php
-                    if($_SESSION['login'] == "admin")
+                    if(isset($_SESSION['login']) && $_SESSION['login'] == "admin")
                     {
                         echo "<form action=\"livre-or.php\" method=\"post\">
                         <br><input type=\"submit\" class=\"submit2\"  name=\"delete".$a."\" value=\"$idcom\" />
-                        </form>";      
+                        </form>";
                     }
                     ?>
                 </article>
@@ -123,9 +116,17 @@ $resultat2 = mysqli_fetch_all($query2, MYSQLI_ASSOC);
                     $requetedislike = "INSERT INTO votes (id_utilisateur, id_commentaire, valeur) VALUES ($intidmoi, $intidcom, -1)";
                     $querydislike = mysqli_query($cnx, $requetedislike);
                     header('Location: livre-or.php');
+                
+                }
+                if (isset($_POST["delete".$a])) {
+                    $todel = $_POST["delete".$a];
+                    $requetedel = "DELETE FROM commentaires WHERE id=$todel";
+                    $querydel = mysqli_query($cnx, $requetedel);
+                    $requetedellike = "DELETE FROM votes WHERE id_commentaire=$todel";
+                    $querydellike = mysqli_query($cnx, $requetedellike);
+                    header('Location:livre-or.php');
                 }
                 $a++;
-                }
             }
             if (!empty($_SESSION['login'])) 
             {
@@ -144,11 +145,11 @@ $resultat2 = mysqli_fetch_all($query2, MYSQLI_ASSOC);
         if(isset($_SESSION['login']))
         { 
             echo "Nous sommes le ".date('d-m-Y')." et il est ".date('H:i:s');
-            echo "<h1><img id=\"icones\" src=\"img/candycane.png\">&nbsp Bonjour ".$_SESSION["login"]."&nbsp <img id=\"icones\" src=\"img/snowmanicon.png\"></h1>";
+            echo "<div id=\"phrasebvn\"><img id=\"icones\" src=\"img/candycane.png\">&nbsp Bonjour ".$_SESSION["login"]."&nbsp <img id=\"icones\" src=\"img/snowmanicon.png\"></div>";
             ?>
             <p>Vous êtes connecté en tant qu'utilisateur :</p>
-            <p>Accédez à votre page de <a href=\"profil.php\">PROFIL</a>&nbsp&nbsp&nbsp&nbsp</p>
-            <p>Ajouter un commentaire en visitant la page <a href=\"commentaire.php\">COMMENTAIRE</a></p><br />
+            <p>Accédez à votre page de <a href="profil.php">PROFIL</a>&nbsp&nbsp&nbsp&nbsp</p>
+            <p>Ajouter un commentaire en visitant la page <a href="commentaire.php">COMMENTAIRE</a></p><br />
             <form action="index.php" method="post">
                 <input class="mybutton"  name="deco" value="Deconnexion" type="submit" />
             </form>

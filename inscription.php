@@ -13,30 +13,34 @@
 <?php include("header.php"); ?>
     <main>
         <section class="leftsidebar">
-            <?php 
-            echo "<img class=\"guirlandehaut\" src=\"img/dividerguirlande.png\">";
+            <img class="guirlandehaut" src="img/dividerguirlande.png">
+            <?php
             if (isset($_SESSION["login"])) 
             {
-                echo "Bonjour, " . $_SESSION["login"] . " vous êtes déja connecté impossible de s'inscrire.<br>";
-                echo "<form action=\"index.php\" method=\"post\">
-                    <input class=\"mybutton\"  name=\"deco\" value=\"Deconnexion\" type=\"submit\" />
-                    </form>";
+                echo "Bonjour, " . $_SESSION["login"] . " vous êtes déja connecté impossible de s'inscrire.<br />";
+                ?>
+                    <form id="btndecoinscri" action="index.php" method="post">
+                        <input class="mybutton"  name="deco" value="Deconnexion" type="submit" />
+                    </form>
+            <?php
             } 
             else 
             {
-                echo "<article id=\"titreinscription\"><h1>Veuillez rentrer vos informations</h1></article>
-                    <form class=\"form_site\" action=\"inscription.php\" method=\"post\">
-                    <label>Login</label>
-                    <input type=\"text\" name=\"login\" required>
-                    <label>Password</label>
-                    <input type=\"password\" name=\"mdp\" required>
-                    <label>Password confirmation</label>
-                    <input type=\"password\" name=\"mdpval\" required>
-                    <br>
-                    <input class=\"mybutton\"  type=\"submit\" value=\"S'inscire\" name=\"valider\">
-                    </form>";
+                ?>
+                <article id="titreinscription"><h1>Veuillez rentrer vos informations</h1></article>
+                    <form class="form_site" action="inscription.php" method="post">
+                        <label>Login</label>
+                        <input type="text" name="login" required>
+                        <label>Password</label>
+                        <input type="password" name="mdp" required>
+                        <label>Password confirmation</label>
+                        <input type="password" name="mdpval" required>
+                        <br />
+                        <input class="mybutton"  type="submit" value="S'inscire" name="valider">
+                    </form>
+                <?php
 
-                if (isset($_POST["valider"])) 
+                if ( isset($_POST["valider"]) )
                 {
                     $login = $_POST["login"];
                     $mdp = password_hash($_POST["mdp"], PASSWORD_BCRYPT, array('cost' => 12));
@@ -47,12 +51,16 @@
 
                     if (!empty($resultat3)) 
                     {
-                        echo "Ce Login est déjà prit";
-                    } 
+                    ?>
+                        <p>Ce Login est déjà prit</p>
+                    <?php
+                    }
                     elseif ($_POST["mdp"] != $_POST["mdpval"]) 
                     {
-                        echo "Attention ! Mot de passe différents";
-                    } 
+                    ?>
+                        <p>Attention ! Mot de passe différents</p>
+                    <?php
+                    }
                     else 
                     {
                         $requete = "INSERT INTO utilisateurs (login, password) VALUES ('$login','$mdp')";
@@ -61,9 +69,8 @@
                     }
                 }
             }
-            echo "<img class=\"guirlandebas\" src=\"img/dividerguirlandebas.png\">";
             ?>
-
+            <img class="guirlandebas" src="img/dividerguirlandebas.png">
         </section>
     </main>
 <?php include("footer.php"); ?>

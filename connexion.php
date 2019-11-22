@@ -58,29 +58,30 @@
         <?php
         if ( $ismdpwrong == true ) {
         ?>
-            Identifiant ou mot de passe incorrect.
+            <p>Identifiant ou mot de passe incorrect.</p>
         <?php
         }
         elseif ( $isIDinconnu == true ) {
         ?>
-            Cet identifiant n'exsite pas.
+            <p>Cet identifiant n'exsite pas.</p>
         <?php
         }
         elseif ( $ischampremplis == true ) {
         ?>
-            Merci de remplir tous les champs!
+            <p>Merci de remplir tous les champs!</p>
         <?php
         }
     }
 
     elseif ( isset($_SESSION['login']) ) {
     ?>
-        ERREUR<br />
-        Vous êtes déjà connecté !
+        <center><img src="img/erreurnoel.gif"><br />
+        <p>ERREUR<br />
+        Vous êtes déjà connecté !</p></center>
     <?php
     }
-    echo "<img class=\"guirlandebas\" src=\"img/dividerguirlandebas.png\">";
     ?>
+        <img class="guirlandebas" src="img/dividerguirlandebas.png">
         </section>
     </main>
    <?php include("footer.php"); ?>
