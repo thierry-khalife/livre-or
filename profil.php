@@ -40,6 +40,7 @@ session_start();
                 </form>
 
                 <?php 
+                    /*------------------2 REQUETES UPDATE--------------------
                     if (isset($_POST['modifier']) ) 
                     {
                          if ($_POST["passwordx"] != $_POST["passwordconf"]) 
@@ -71,8 +72,45 @@ session_start();
                                 $_SESSION['login']=$_POST['login'];
                                 header("Location:profil.php");
                             }
+                    }*/
+                    //------------------1 REQUETE UPDATE--------------------
+                    if (isset($_POST['modifier']) ) 
+                    {
+                        if ($_POST["passwordx"] != $_POST["passwordconf"]) 
+                        {
+                        ?>
+                            <p>Attention ! Mot de passe différents</p>
+                        <?php
+                        } 
+                        else{
+                        $login = $_POST["login"];
+                        $req = "SELECT login FROM utilisateurs WHERE login = '$login'";
+                        $req3 = mysqli_query($connexion, $req);
+                        $veriflog = mysqli_fetch_all($req3);
+                            if(!empty($veriflog))
+                            {
+                                ?>
+                                <p>Login deja utilisé, requete refusé.</p><br />
+                                <?php
+                            }
+                            elseif(empty($veriflog) || $_POST['login'] == $_SESSION['login'] )
+                            {
+                                if(isset($_POST['passwordx']) && !empty($_POST['passwordx'])){
+                                    $pwdx = password_hash($_POST['passwordx'], PASSWORD_BCRYPT, array('cost' => 12));
+                                }
+                                else{
+                                    $pwdx =$resultat['password'];
+                                }
+                                $updatelog = "UPDATE utilisateurs SET login ='" . $_POST['login'] . "', password = '$pwdx'  WHERE id = '" . $resultat['id'] . "'";
+                                $querylog = mysqli_query($connexion, $updatelog); # Execution de la requête;
+                                $_SESSION['login']=$_POST['login'];
+                                header("Location:profil.php");
+                            }
+                        }
+                       
                     }
-                    ?>
+
+                ?>
             <img class="guirlandebas" src="img/dividerguirlandebas.png">
         </section>
 
