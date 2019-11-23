@@ -22,9 +22,9 @@
             <img id="perenoel" src="img/perenoelfloss.gif">
             <?php
             echo "Nous sommes le ".date('d-m-Y')." et il est ".date('H:i:s');
-            echo "<div id=\"phrasebvn\"><img id=\"icones\" src=\"img/candycane.png\">&nbsp Bonjour ".$_SESSION["login"]."&nbsp <img id=\"icones\" src=\"img/snowmanicon.png\"></div>";
-            echo "<p>Vous êtes connecté en tant qu'utilisateur. Accédez à votre page de <a href=\"profil.php\">PROFIL</a></p>";
             ?>
+            <div id="phrasebvn"><img id="icones" src="img/candycane.png"><?php echo "&nbsp Bonjour ".$_SESSION["login"]." &nbsp" ?><img id="icones" src="img/snowmanicon.png"></div>
+            <p>Vous êtes connecté en tant qu'utilisateur. Accédez à votre page de <a href="profil.php">PROFIL</a></p>
             <p>Ajouter un <a href="commentaire.php">COMMENTAIRE</a> dans notre : <a href="livre-or.php">LIVRE D'OR</a></p>
             <form action="index.php" method="post">
                 <input class="mybutton"  name="deco" value="Deconnexion" type="submit" />
