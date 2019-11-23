@@ -140,7 +140,7 @@ $resultat2 = mysqli_fetch_all($query2, MYSQLI_ASSOC);
             if (!empty($_SESSION['login'])) 
             {
                 ?>
-                <p>Vous êtes connecté en tant qu'utilisateur. Ajouter un commentaire en visitant la page <a href=\"commentaire.php\">COMMENTAIRE</a></p>
+                <p>Vous êtes connecté en tant qu'utilisateur. Ajouter un commentaire en visitant la page <a href="commentaire.php">COMMENTAIRE</a></p>
                 <?php
             }
             ?>
