@@ -44,8 +44,8 @@
     <?php include("header.php"); ?>
     <main>
         <section class="leftsidebar">
+        <img class="guirlandehaut" src="img/dividerguirlande.png">
     <?php
-    echo "<img class=\"guirlandehaut\" src=\"img/dividerguirlande.png\">";
     if ( !isset($_SESSION['login']) ) {
     ?>
         <form class="form_site" method="post" action="connexion.php">
