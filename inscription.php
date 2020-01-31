@@ -36,7 +36,7 @@
                         <label>Password confirmation</label>
                         <input type="password" name="mdpval" required>
                         <br />
-                        <input class="mybutton"  type="submit" value="S'inscrire" name="valider">
+                        <input class="mybutton"  type="submit" value="S'inscire" name="valider">
                     </form>
                 <?php
 
