@@ -5,8 +5,7 @@
     $is10car = false;
 
     if ( isset($_POST['envoyer']) == true && isset($_POST['message']) && strlen($_POST['message']) >= 10 ) {
-        $connexion = mysqli_connect("localhost", "root", "", "livreor");
-        
+        $connexion = mysqli_connect("localhost", "nicolas", "Nicoju13", "nicolas-camilloni_livre-or");        
         $requete = "SELECT * FROM utilisateurs WHERE login ='".$_SESSION['login']."'";
         $query = mysqli_query($connexion, $requete);
         $resultat = mysqli_fetch_all($query);

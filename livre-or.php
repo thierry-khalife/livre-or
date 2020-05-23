@@ -2,7 +2,7 @@
 session_start();
 ob_start();
 
-$cnx = mysqli_connect("localhost", "root", "", "livreor");
+$cnx = mysqli_connect("localhost", "nicolas", "Nicoju13", "nicolas-camilloni_livre-or");
 $requete1 = "SELECT * FROM commentaires ORDER BY date DESC";
 $query1 = mysqli_query($cnx, $requete1);
 $resultat = mysqli_fetch_all($query1, MYSQLI_ASSOC);

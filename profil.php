@@ -20,7 +20,7 @@ session_start();
             <?php
             if (isset($_SESSION['login']))
             {
-                $connexion = mysqli_connect("localhost", "root", "", "livreor"); # Connexion à notre base de données.
+                $connexion = mysqli_connect("localhost", "nicolas", "Nicoju13", "nicolas-camilloni_livre-or"); # Connexion à notre base de données.
                 $requete = "SELECT * FROM utilisateurs WHERE login='" . $_SESSION['login'] . "'"; # Préparation de la requête;
                 $query = mysqli_query($connexion, $requete); # Execution de la requête;
                 $resultat = mysqli_fetch_assoc($query); # Récupération des résultats de la requête;
