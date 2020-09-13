@@ -2,13 +2,13 @@
 session_start();
 ob_start();
 
-$cnx = mysqli_connect("localhost", "nicolas", "Nicoju13", "nicolas-camilloni_livre-or");
-$requete1 = "SELECT * FROM commentaires ORDER BY date DESC";
+$cnx = mysqli_connect("db5000890310.hosting-data.io", "dbu594451", "S26n6j29p20m13!", "dbs781078");
+$requete1 = "SELECT * FROM livreor_commentaires ORDER BY date DESC";
 $query1 = mysqli_query($cnx, $requete1);
 $resultat = mysqli_fetch_all($query1, MYSQLI_ASSOC);
 
 if ( isset($_SESSION['login']) ) {
-$requete2 = "SELECT * FROM utilisateurs WHERE login='".$_SESSION['login']."'";
+$requete2 = "SELECT * FROM livreor_utilisateurs WHERE login='".$_SESSION['login']."'";
 $query2 = mysqli_query($cnx, $requete2);
 $resultat2 = mysqli_fetch_all($query2, MYSQLI_ASSOC);
 }
@@ -40,23 +40,23 @@ $resultat2 = mysqli_fetch_all($query2, MYSQLI_ASSOC);
                 $iduser = $resultat[$a]['id_utilisateur'];
                 $idcom = $resultat[$a]['id'];
                 $intidcom = intval($idcom);
-                $requetelogin = "SELECT login FROM utilisateurs WHERE id=$iduser";
+                $requetelogin = "SELECT login FROM livreor_utilisateurs WHERE id=$iduser";
                 $query2 = mysqli_query($cnx, $requetelogin);
                 $resultatlogin = mysqli_fetch_all($query2, MYSQLI_ASSOC);
                 if ( isset($_SESSION['login']) ) {
                     $idmoi = $resultat2[0]['id'];
                     $intidmoi = intval($idmoi);
-                    $requetecount = "SELECT COUNT(*) FROM votes WHERE id_utilisateur=$intidmoi  AND id_commentaire=$intidcom AND valeur=1";
+                    $requetecount = "SELECT COUNT(*) FROM livreor_votes WHERE id_utilisateur=$intidmoi  AND id_commentaire=$intidcom AND valeur=1";
                     $query3 = mysqli_query($cnx, $requetecount);
                     $resultat3 = mysqli_fetch_all($query3, MYSQLI_ASSOC);
-                    $requetecountdislike = "SELECT COUNT(*) FROM votes WHERE id_utilisateur=$intidmoi  AND id_commentaire=$intidcom AND valeur=-1";
+                    $requetecountdislike = "SELECT COUNT(*) FROM livreor_votes WHERE id_utilisateur=$intidmoi  AND id_commentaire=$intidcom AND valeur=-1";
                     $query4 = mysqli_query($cnx, $requetecountdislike);
                     $resultat4 = mysqli_fetch_all($query4, MYSQLI_ASSOC);
                 }
-                $requetecountlikeall = "SELECT COUNT(*) FROM votes WHERE id_commentaire=$intidcom AND valeur=1";
+                $requetecountlikeall = "SELECT COUNT(*) FROM livreor_votes WHERE id_commentaire=$intidcom AND valeur=1";
                 $query5 = mysqli_query($cnx, $requetecountlikeall);
                 $resultat5 = mysqli_fetch_all($query5, MYSQLI_ASSOC);
-                $requetecountdislikeall = "SELECT COUNT(*) FROM votes WHERE id_commentaire=$intidcom AND valeur=-1";
+                $requetecountdislikeall = "SELECT COUNT(*) FROM livreor_votes WHERE id_commentaire=$intidcom AND valeur=-1";
                 $query6 = mysqli_query($cnx, $requetecountdislikeall);
                 $resultat6 = mysqli_fetch_all($query6, MYSQLI_ASSOC);
                 ?>
@@ -101,37 +101,37 @@ $resultat2 = mysqli_fetch_all($query2, MYSQLI_ASSOC);
                 <?php
                 if ( isset($_SESSION['login']) && isset($_POST['likebutton'.$a]) && $resultat3[0]['COUNT(*)'] == "0" ) {
                     if ( $resultat4[0]['COUNT(*)'] == "1" ) {
-                        $requeteresetlike = "DELETE FROM votes WHERE id_commentaire=$intidcom AND id_utilisateur=$intidmoi";
+                        $requeteresetlike = "DELETE FROM livreor_votes WHERE id_commentaire=$intidcom AND id_utilisateur=$intidmoi";
                         $queryresetlike = mysqli_query($cnx, $requeteresetlike);
                     }
-                    $requetelike = "INSERT INTO votes (id_utilisateur, id_commentaire, valeur) VALUES ($intidmoi, $intidcom, 1)";
+                    $requetelike = "INSERT INTO livreor_votes (id_utilisateur, id_commentaire, valeur) VALUES ($intidmoi, $intidcom, 1)";
                     $querylike = mysqli_query($cnx, $requetelike);
                     header('Location: livre-or.php');
                 }
                 if ( isset($_SESSION['login']) && isset($_POST['likebutton'.$a]) && $resultat3[0]['COUNT(*)'] != "0" ) {
-                    $requeteresetlike = "DELETE FROM votes WHERE id_commentaire=$intidcom AND id_utilisateur=$intidmoi";
+                    $requeteresetlike = "DELETE FROM livreor_votes WHERE id_commentaire=$intidcom AND id_utilisateur=$intidmoi";
                     $queryresetlike = mysqli_query($cnx, $requeteresetlike);
                     header('Location: livre-or.php');
                 }
                 if ( isset($_SESSION['login']) && isset($_POST['dislikebutton'.$a]) && $resultat4[0]['COUNT(*)'] == "0" ) {
                     if ( $resultat3[0]['COUNT(*)'] == "1" ) {
-                        $requeteresetdislike = "DELETE FROM votes WHERE id_commentaire=$intidcom AND id_utilisateur=$intidmoi";
+                        $requeteresetdislike = "DELETE FROM livreor_votes WHERE id_commentaire=$intidcom AND id_utilisateur=$intidmoi";
                         $queryresetdislike = mysqli_query($cnx, $requeteresetdislike);
                     }
-                    $requetedislike = "INSERT INTO votes (id_utilisateur, id_commentaire, valeur) VALUES ($intidmoi, $intidcom, -1)";
+                    $requetedislike = "INSERT INTO livreor_votes (id_utilisateur, id_commentaire, valeur) VALUES ($intidmoi, $intidcom, -1)";
                     $querydislike = mysqli_query($cnx, $requetedislike);
                     header('Location: livre-or.php');
                 }
                 if ( isset($_SESSION['login']) && isset($_POST['dislikebutton'.$a]) && $resultat4[0]['COUNT(*)'] != "0" ) {
-                    $requeteresetlike = "DELETE FROM votes WHERE id_commentaire=$intidcom AND id_utilisateur=$intidmoi";
+                    $requeteresetlike = "DELETE FROM livreor_votes WHERE id_commentaire=$intidcom AND id_utilisateur=$intidmoi";
                     $queryresetlike = mysqli_query($cnx, $requeteresetlike);
                     header('Location: livre-or.php');
                 }
                 if (isset($_POST["delete".$a])) {
                     $todel = $_POST["delete".$a];
-                    $requetedel = "DELETE FROM commentaires WHERE id=$todel";
+                    $requetedel = "DELETE FROM livreor_commentaires WHERE id=$todel";
                     $querydel = mysqli_query($cnx, $requetedel);
-                    $requetedellike = "DELETE FROM votes WHERE id_commentaire=$todel";
+                    $requetedellike = "DELETE FROM livreor_votes WHERE id_commentaire=$todel";
                     $querydellike = mysqli_query($cnx, $requetedellike);
                     header('Location:livre-or.php');
                 }

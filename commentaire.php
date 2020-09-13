@@ -5,14 +5,14 @@
     $is10car = false;
 
     if ( isset($_POST['envoyer']) == true && isset($_POST['message']) && strlen($_POST['message']) >= 10 ) {
-        $connexion = mysqli_connect("localhost", "nicolas", "Nicoju13", "nicolas-camilloni_livre-or");        
-        $requete = "SELECT * FROM utilisateurs WHERE login ='".$_SESSION['login']."'";
+        $connexion = mysqli_connect("db5000890310.hosting-data.io", "dbu594451", "S26n6j29p20m13!", "dbs781078");
+        $requete = "SELECT * FROM livreor_utilisateurs WHERE login ='".$_SESSION['login']."'";
         $query = mysqli_query($connexion, $requete);
         $resultat = mysqli_fetch_all($query);
 
         $msg = $_POST['message'];
         $remsg = addslashes($msg);
-        $requete2 = "INSERT INTO commentaires (commentaire, id_utilisateur, date) VALUES ('$remsg', ".$resultat[0][0].", '".date("Y-m-d H:i:s")."')";
+        $requete2 = "INSERT INTO livreor_commentaires (commentaire, id_utilisateur, date) VALUES ('$remsg', ".$resultat[0][0].", '".date("Y-m-d H:i:s")."')";
         $query2 = mysqli_query($connexion, $requete2);
 
         mysqli_close($connexion);

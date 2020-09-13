@@ -25,11 +25,13 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `commentaires`
+-- Structure de la table `livreor_commentaires`
 --
 
-DROP TABLE IF EXISTS `commentaires`;
-CREATE TABLE IF NOT EXISTS `commentaires` (
+USE dbs781078;
+
+DROP TABLE IF EXISTS `livreor_commentaires`;
+CREATE TABLE IF NOT EXISTS `livreor_commentaires` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `commentaire` text NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
@@ -38,10 +40,10 @@ CREATE TABLE IF NOT EXISTS `commentaires` (
 ) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `commentaires`
+-- Déchargement des données de la table `livreor_commentaires`
 --
 
-INSERT INTO `commentaires` (`id`, `commentaire`, `id_utilisateur`, `date`) VALUES
+INSERT INTO `livreor_commentaires` (`id`, `commentaire`, `id_utilisateur`, `date`) VALUES
 (23, 'Salut mec!', 2, '2019-11-22 12:01:59'),
 (22, 'Salut Ã  tous !', 3, '2019-11-22 11:58:09'),
 (24, 'odfiehznlksmf,elf,', 2, '2019-11-22 13:37:19'),
@@ -50,11 +52,11 @@ INSERT INTO `commentaires` (`id`, `commentaire`, `id_utilisateur`, `date`) VALUE
 -- --------------------------------------------------------
 
 --
--- Structure de la table `utilisateurs`
+-- Structure de la table `livreor_utilisateurs`
 --
 
-DROP TABLE IF EXISTS `utilisateurs`;
-CREATE TABLE IF NOT EXISTS `utilisateurs` (
+DROP TABLE IF EXISTS `livreor_utilisateurs`;
+CREATE TABLE IF NOT EXISTS `livreor_utilisateurs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `login` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -62,10 +64,10 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `utilisateurs`
+-- Déchargement des données de la table `livreor_utilisateurs`
 --
 
-INSERT INTO `utilisateurs` (`id`, `login`, `password`) VALUES
+INSERT INTO `livreor_utilisateurs` (`id`, `login`, `password`) VALUES
 (1, 'test1', '$2y$12$o39Mr/wMn92wA7fr1PVqOOSByDLD7U5eSRNr.cej52kCAALyGqlcO'),
 (2, 'deku', '$2y$12$Y9kg68K9wxFu10ujqmkdcultzAG96CnweNT4ELxh1z3wGXyg9X5Ry'),
 (3, 'admin', '$2y$12$zDEtbV9eO2h4iCiFD.xp/uRJaiXNUPODBXm5cALStdYs0g/NzwFMu'),
@@ -74,11 +76,11 @@ INSERT INTO `utilisateurs` (`id`, `login`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `votes`
+-- Structure de la table `livreor_votes`
 --
 
-DROP TABLE IF EXISTS `votes`;
-CREATE TABLE IF NOT EXISTS `votes` (
+DROP TABLE IF EXISTS `livreor_votes`;
+CREATE TABLE IF NOT EXISTS `livreor_votes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_commentaire` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
@@ -87,10 +89,10 @@ CREATE TABLE IF NOT EXISTS `votes` (
 ) ENGINE=MyISAM AUTO_INCREMENT=174 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `votes`
+-- Déchargement des données de la table `livreor_votes`
 --
 
-INSERT INTO `votes` (`id`, `id_commentaire`, `id_utilisateur`, `valeur`) VALUES
+INSERT INTO `livreor_votes` (`id`, `id_commentaire`, `id_utilisateur`, `valeur`) VALUES
 (173, 25, 2, 1),
 (168, 22, 2, 1),
 (167, 23, 2, -1),

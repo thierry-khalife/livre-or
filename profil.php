@@ -20,8 +20,8 @@ session_start();
             <?php
             if (isset($_SESSION['login']))
             {
-                $connexion = mysqli_connect("localhost", "nicolas", "Nicoju13", "nicolas-camilloni_livre-or"); # Connexion à notre base de données.
-                $requete = "SELECT * FROM utilisateurs WHERE login='" . $_SESSION['login'] . "'"; # Préparation de la requête;
+                $connexion = mysqli_connect("db5000890310.hosting-data.io", "dbu594451", "S26n6j29p20m13!", "dbs781078");
+                $requete = "SELECT * FROM livreor_utilisateurs WHERE login='" . $_SESSION['login'] . "'"; # Préparation de la requête;
                 $query = mysqli_query($connexion, $requete); # Execution de la requête;
                 $resultat = mysqli_fetch_assoc($query); # Récupération des résultats de la requête;
 
@@ -84,7 +84,7 @@ session_start();
                         } 
                         else{
                         $login = $_POST["login"];
-                        $req = "SELECT login FROM utilisateurs WHERE login = '$login'";
+                        $req = "SELECT login FROM livreor_utilisateurs WHERE login = '$login'";
                         $req3 = mysqli_query($connexion, $req);
                         $veriflog = mysqli_fetch_all($req3);
                             if(!empty($veriflog))
@@ -101,7 +101,7 @@ session_start();
                                 else{
                                     $pwdx =$resultat['password'];
                                 }
-                                $updatelog = "UPDATE utilisateurs SET login ='" . $_POST['login'] . "', password = '$pwdx'  WHERE id = '" . $resultat['id'] . "'";
+                                $updatelog = "UPDATE livreor_utilisateurs SET login ='" . $_POST['login'] . "', password = '$pwdx'  WHERE id = '" . $resultat['id'] . "'";
                                 $querylog = mysqli_query($connexion, $updatelog); # Execution de la requête;
                                 $_SESSION['login']=$_POST['login'];
                                 header("Location:profil.php");
